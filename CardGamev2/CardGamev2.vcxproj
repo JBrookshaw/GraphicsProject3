@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0B0CE284-740A-47B6-A447-830AE4BACDB7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CardGamev2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\opengl-wrappers\glfw-3.0.1.bin.WIN32\include;C:\opengl-wrappers\glew\glew-1.9.0\include;C:\Users\JBrookshaw\Documents\Visual Studio 2010\Projects\CardGame_v2\GraphicsProject\CardGamev2\external\assimp\include;C:\glm-0.9.4.0;C:\assimp-3.0.1270\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\opengl-wrappers\glew\glew-1.9.0\lib;C:\opengl-wrappers\glfw-3.0.1.bin.WIN32\lib-msvc100;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;C:\assimp-3.0.1270\code\Debug\assimp.lib;C:\assimp-3.0.1270\contrib\zlib\Debug\zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="utils\p1controls.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="utils\objloader.cpp" />
+    <ClCompile Include="utils\shader.cpp" />
+    <ClCompile Include="utils\texture.cpp" />
+    <ClCompile Include="utils\vboindexer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils\p1controls.hpp" />
+    <ClInclude Include="utils\objloader.hpp" />
+    <ClInclude Include="utils\shader.hpp" />
+    <ClInclude Include="utils\texture.hpp" />
+    <ClInclude Include="utils\vboindexer.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\CardGamev2.Build.CppClean.log" />
+    <None Include="Debug\CardGamev2.lastbuildstate" />
+    <None Include="Debug\CardGamev2.log" />
+    <None Include="Debug\CardGamev2.unsuccessfulbuild" />
+    <None Include="Debug\CardGamev2.write.1.tlog" />
+    <None Include="Debug\cl.command.1.tlog" />
+    <None Include="Debug\CL.read.1.tlog" />
+    <None Include="Debug\CL.write.1.tlog" />
+    <None Include="Debug\vc100.idb" />
+    <None Include="Debug\vc100.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Debug\objloader.obj" />
+    <Object Include="Debug\shader.obj" />
+    <Object Include="Debug\texture.obj" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
