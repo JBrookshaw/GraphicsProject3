@@ -1,20 +1,13 @@
 
-
-
-
-// Include standard headers
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
 
-// Include GLEW
 #include <GL/glew.h>
 
-// Include GLFW
 #include <GLFW/glfw3.h>
 GLFWwindow* window;
 
-// Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
@@ -71,9 +64,11 @@ using namespace glm;
 	glm::mat4 ModelMatrix1 = glm::mat4(1.0);
 
 	glm::mat4 P2CARD3m = glm::mat4(1.0);
+	glm::mat4 P2CARD2m = glm::mat4(1.0);
 	glm::mat4 P2CARD1m = glm::mat4(1.0);
 
 	glm::mat4 P1CARD3m = glm::mat4(1.0);
+	glm::mat4 P1CARD2m = glm::mat4(1.0);
 	glm::mat4 P1CARD1m = glm::mat4(1.0);
 
 	glm::mat4 MVP1;
@@ -81,6 +76,8 @@ using namespace glm;
 	glm::mat4 MVP3;
 	glm::mat4 MVP4;
 	glm::mat4 MVP5;
+	glm::mat4 MVP6;
+	glm::mat4 MVP7;
 
 	void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glActiveTexture(GL_TEXTURE0);
@@ -248,6 +245,11 @@ int main( void )
 		P2CARD3m = P2CARD3m * myScalingMatrix2 * rotation;
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		setP2Card3(P2CARD3m);
+
+		P2CARD2m = glm::translate(P2CARD2m, glm::vec3(-0.0f, 0.1f, -3.3f));
+		P2CARD2m = P2CARD2m * myScalingMatrix2 * rotation;
+		MVP6 = ProjectionMatrix * ViewMatrix * P2CARD2m;
+		setP2Card2(P2CARD2m);
 		
 		P2CARD1m = glm::translate(P2CARD1m, glm::vec3(4.0f, 0.1f, -3.3f));
 		P2CARD1m = P2CARD1m * myScalingMatrix2 * rotation;
@@ -258,7 +260,12 @@ int main( void )
 		P1CARD3m = P1CARD3m * myScalingMatrix2;
 		MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
 		setP1Card3(P1CARD3m);
-		
+
+		P1CARD2m = glm::translate(P1CARD2m, glm::vec3(0.0f, 0.1f, 3.3f));
+		P1CARD2m = P1CARD2m * myScalingMatrix2;
+		MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
+		setP1Card2(P1CARD2m);
+
 		P1CARD1m = glm::translate(P1CARD1m, glm::vec3(-4.0f, 0.1f, 3.3f));
 		P1CARD1m = P1CARD1m * myScalingMatrix2;
 		MVP5 = ProjectionMatrix * ViewMatrix * P1CARD1m;
@@ -282,14 +289,19 @@ int main( void )
 		player1Inputs();
 
 		P1CARD1m = getP1Card1();
+		P1CARD2m = getP1Card2();
 		P1CARD3m = getP1Card3();
 		
 		P2CARD1m = getP2Card1();
+		P2CARD2m = getP2Card2();
 		P2CARD3m = getP2Card3();
 	
-		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD1m;
-		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD3m;
+		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
+		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
 		MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
+		MVP5 = ProjectionMatrix * ViewMatrix * P1CARD1m;
+		MVP6 = ProjectionMatrix * ViewMatrix * P2CARD2m;
+		MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
 
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -355,7 +367,10 @@ int main( void )
 		drawCard(P2CARD3m,MVP2,Texture2);
 		drawCard(P2CARD1m,MVP3,Texture3);
 		drawCard(P1CARD3m,MVP4,Texture4);
-		drawCard(P2CARD1m,MVP5,Texture5);
+		drawCard(P1CARD1m,MVP5,Texture5);
+		drawCard(P2CARD2m,MVP6,Texture5);
+		drawCard(P1CARD2m,MVP7,Texture4);
+	
 
 		////// End of rendering of the second object //////
 

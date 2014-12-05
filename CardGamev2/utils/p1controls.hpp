@@ -3,6 +3,9 @@
 
 void player1Inputs();
 void createCopys();
+void p1card3attack();
+void readInputs();
+void player1Selection();
 
 glm::mat4 getP1Card1();
 glm::mat4 getP1Card2();
