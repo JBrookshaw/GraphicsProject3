@@ -341,22 +341,25 @@ void createCopys_(){
 }
 
 void readInputs_(){
-
-		if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+	bool isCardSelected = p2card1selected || p2card2selected || p2card3selected;
+	
+		if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS && isCardSelected){
 			attack_right = true;
 			attack_left=false;
 			attack_middle =false;
 		}
-		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
 			attack_left=true;
 			attack_middle =false;
 		}
-		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
+		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
 			attack_left=false;
 			attack_middle =true;
 		}
+
+	
 
 	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
 		p2card1selected = true;

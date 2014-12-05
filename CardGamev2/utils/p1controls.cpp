@@ -345,19 +345,19 @@ void createCopys(){
 
 void readInputs(){
 
-	
+	bool isCardSelected = p1card1selected || p1card2selected || p1card3selected;
 
-		if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+		if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS && isCardSelected){
 			attackright = true;
 			attackleft=false;
 			attackmiddle =false;
 		}
-		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
 			attackleft=true;
 			attackmiddle =false;
 		}
-		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
+		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
 			attackleft=false;
 			attackmiddle =true;
