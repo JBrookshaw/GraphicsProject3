@@ -14,8 +14,10 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+#ignoring log files
 *.tlog
 *.suo
+*.log
 
 # =========================
 # Operating System Files
