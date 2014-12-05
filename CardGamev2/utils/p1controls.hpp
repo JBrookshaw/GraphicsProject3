@@ -3,7 +3,10 @@
 
 void player1Inputs();
 void createCopys();
+
 void p1card3attack();
+void p1card1attack();
+
 void readInputs();
 void player1Selection();
 

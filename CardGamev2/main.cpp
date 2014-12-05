@@ -19,84 +19,93 @@ using namespace glm;
 #include "utils/vboindexer.hpp"
 #include "utils/p1controls.hpp"
 
-	GLuint Texture;
-	GLuint Texture2;
-	GLuint Texture3;
-	GLuint Texture4;
-	GLuint Texture5;
+GLuint Texture;
+GLuint Texture2;
+GLuint Texture3;
+GLuint Texture4;
+GLuint Texture5;
 
-	GLuint VertexArrayID;
+GLuint VertexArrayID;
 
-	GLuint programID;
+GLuint programID;
 
-	GLuint MatrixID;
-	GLuint ViewMatrixID;
-	GLuint ModelMatrixID;
+GLuint MatrixID;
+GLuint ViewMatrixID;
+GLuint ModelMatrixID;
 
-	GLuint TextureID;
+GLuint TextureID;
 
-	std::vector<glm::vec3> vertices;
-	std::vector<glm::vec2> uvs;
-	std::vector<glm::vec3> normals;
-	std::vector<unsigned short> indices;
-	std::vector<glm::vec3> indexed_vertices;
-	std::vector<glm::vec2> indexed_uvs;
-	std::vector<glm::vec3> indexed_normals;
+std::vector<glm::vec3> vertices;
+std::vector<glm::vec2> uvs;
+std::vector<glm::vec3> normals;
+std::vector<unsigned short> indices;
+std::vector<glm::vec3> indexed_vertices;
+std::vector<glm::vec2> indexed_uvs;
+std::vector<glm::vec3> indexed_normals;
 
-	std::vector<glm::vec3> vertices2;
-	std::vector<glm::vec2> uvs2;
-	std::vector<glm::vec3> normals2;
-	std::vector<unsigned short> indices2;
-	std::vector<glm::vec3> indexed_vertices2;
-	std::vector<glm::vec2> indexed_uvs2;
-	std::vector<glm::vec3> indexed_normals2;
+std::vector<glm::vec3> vertices2;
+std::vector<glm::vec2> uvs2;
+std::vector<glm::vec3> normals2;
+std::vector<unsigned short> indices2;
+std::vector<glm::vec3> indexed_vertices2;
+std::vector<glm::vec2> indexed_uvs2;
+std::vector<glm::vec3> indexed_normals2;
 
-	GLuint vertexbuffer;
-	GLuint uvbuffer;
-	GLuint normalbuffer;
-	GLuint elementbuffer;
+GLuint vertexbuffer;
+GLuint uvbuffer;
+GLuint normalbuffer;
+GLuint elementbuffer;
 
-	GLuint vertexbuffer2;
-	GLuint uvbuffer2;
-	GLuint normalbuffer2;
-	GLuint elementbuffer2;
+GLuint vertexbuffer2;
+GLuint uvbuffer2;
+GLuint normalbuffer2;
+GLuint elementbuffer2;
 
-	glm::mat4 ModelMatrix1 = glm::mat4(1.0);
+glm::mat4 ProjectionMatrix;
+glm::mat4 ViewMatrix;
 
-	glm::mat4 P2CARD3m = glm::mat4(1.0);
-	glm::mat4 P2CARD2m = glm::mat4(1.0);
-	glm::mat4 P2CARD1m = glm::mat4(1.0);
+glm::mat4 ModelMatrix1 = glm::mat4(1.0);
 
-	glm::mat4 P1CARD3m = glm::mat4(1.0);
-	glm::mat4 P1CARD2m = glm::mat4(1.0);
-	glm::mat4 P1CARD1m = glm::mat4(1.0);
+glm::mat4 P2CARD3m = glm::mat4(1.0);
+glm::mat4 P2CARD2m = glm::mat4(1.0);
+glm::mat4 P2CARD1m = glm::mat4(1.0);
 
-	glm::mat4 MVP1;
-	glm::mat4 MVP2;
-	glm::mat4 MVP3;
-	glm::mat4 MVP4;
-	glm::mat4 MVP5;
-	glm::mat4 MVP6;
-	glm::mat4 MVP7;
+glm::mat4 P1CARD3m = glm::mat4(1.0);
+glm::mat4 P1CARD2m = glm::mat4(1.0);
+glm::mat4 P1CARD1m = glm::mat4(1.0);
 
-	void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
+glm::mat4 MVP1;
+glm::mat4 MVP2;
+glm::mat4 MVP3;
+glm::mat4 MVP4;
+glm::mat4 MVP5;
+glm::mat4 MVP6;
+glm::mat4 MVP7;
+
+glm::mat4 setUpCard(glm::mat4 MODEL, glm::mat4 MVP, glm::vec3 TRANS, glm::mat4 SCALE, glm::mat4 ROTA){
+	MODEL = glm::translate(MODEL, TRANS);
+	MODEL = MODEL * SCALE * ROTA;
+	MVP = ProjectionMatrix * ViewMatrix * MODEL;
+	return MODEL;
+}
+void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, tex);
-		glUniform1i(TextureID, 0);
-		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &mvp[0][0]);
-		glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &model[0][0]);
-		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer2);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, uvbuffer2);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
-		glEnableVertexAttribArray(2);
-		glBindBuffer(GL_ARRAY_BUFFER, normalbuffer2);
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer2);
-	
-		glDrawElements(GL_TRIANGLES, indices2.size(), GL_UNSIGNED_SHORT, (void*)0);
+	glBindTexture(GL_TEXTURE_2D, tex);
+	glUniform1i(TextureID, 0);
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &mvp[0][0]);
+	glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &model[0][0]);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer2);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glEnableVertexAttribArray(1);
+	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer2);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glEnableVertexAttribArray(2);
+	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer2);
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer2);
+
+	glDrawElements(GL_TRIANGLES, indices2.size(), GL_UNSIGNED_SHORT, (void*)0);
 }
 
 int main( void )
@@ -144,7 +153,7 @@ int main( void )
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	ViewMatrixID = glGetUniformLocation(programID, "V");
 	ModelMatrixID = glGetUniformLocation(programID, "M");
-	
+
 	TextureID  = glGetUniformLocation(programID, "myTextureSampler");
 
 	Texture = loadDDS("tex/cardbg2.DDS");
@@ -155,7 +164,7 @@ int main( void )
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
-	
+
 	// Read our .obj file
 	bool res = loadOBJ("obj/cardbg.obj", vertices, uvs, normals);
 
@@ -206,73 +215,74 @@ int main( void )
 	int nbFrames = 0;
 
 	glm::mat4 myScalingMatrix = glm::scale(2.3f, 1.0f , 3.5f);
-	glm::mat4 myScalingMatrix2 = glm::scale(0.8f, 1.0f ,0.8f);
+	glm::mat4 cardSize = glm::scale(0.8f, 1.0f ,0.8f);
 	glm::mat4 myScalingMatrix3 = glm::scale(0.95f, 1.0f ,0.95f);
-	
+
 	glm::mat4 myMatrix = glm::translate(0.0f, 0.0f, -0.05f);
 	glm::mat4 select = glm::translate(0.0f, 0.005f, 0.0f);
 
-	 mat4 rotation = mat4(
-        vec4( cos(3.14), 0.0,  sin(3.14),  0.0),
-        vec4(0.0,  1.0, 0.0, 0.0),
+	mat4 rotation = mat4(
+		vec4( cos(3.14), 0.0,  sin(3.14),  0.0),
+		vec4(0.0,  1.0, 0.0, 0.0),
 		vec4(-sin(3.14), 0.0,  cos(3.14),  0.0),
 		vec4( 0.0, 0.0, 0.0, 1.0)
-    );
+		);
 
-	 mat4 rotation2 = mat4(
-        vec4( cos(0.2), 0.0,  sin(0.2),  0.0),
-        vec4(0.0,  1.0, 0.0, 0.0),
+	mat4 rotation2 = mat4(
+		vec4( cos(0.2), 0.0,  sin(0.2),  0.0),
+		vec4(0.0,  1.0, 0.0, 0.0),
 		vec4(-sin(0.2), 0.0,  cos(0.2),  0.0),
 		vec4( 0.0, 0.0, 0.0, 1.0)
-    );
+		);
 
-	 mat4 dieAnimation = myScalingMatrix3*rotation2;
+	mat4 dieAnimation = myScalingMatrix3*rotation2;
 
-	glm::mat4 ProjectionMatrix = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+	ProjectionMatrix = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 	// ProjectionMatrix = ProjectionMatrix * myScalingMatrix;
 	// Camera matrix
 
-	glm::mat4 ViewMatrix       = glm::lookAt(
-								glm::vec3(0,17,0.001f), // Camera is at (4,3,-3), in World Space
-								glm::vec3(0,0,0), // and looks at the origin
-								glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-						   );
+	ViewMatrix       = glm::lookAt(
+		glm::vec3(0,17,0.001f), // Camera is at (4,3,-3), in World Space
+		glm::vec3(0,0,0), // and looks at the origin
+		glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+		);
 
-		ModelMatrix1 = ModelMatrix1 * myScalingMatrix;
-		MVP1 = ProjectionMatrix * ViewMatrix * ModelMatrix1;
-		
-		P2CARD3m = glm::translate(P2CARD3m, glm::vec3(-4.0f, 0.1f, -3.3f));
-		P2CARD3m = P2CARD3m * myScalingMatrix2 * rotation;
-		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
-		setP2Card3(P2CARD3m);
+	ModelMatrix1 = ModelMatrix1 * myScalingMatrix;
+	MVP1 = ProjectionMatrix * ViewMatrix * ModelMatrix1;
 
-		P2CARD2m = glm::translate(P2CARD2m, glm::vec3(-0.0f, 0.1f, -3.3f));
-		P2CARD2m = P2CARD2m * myScalingMatrix2 * rotation;
-		MVP6 = ProjectionMatrix * ViewMatrix * P2CARD2m;
-		setP2Card2(P2CARD2m);
-		
-		P2CARD1m = glm::translate(P2CARD1m, glm::vec3(4.0f, 0.1f, -3.3f));
-		P2CARD1m = P2CARD1m * myScalingMatrix2 * rotation;
-		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
-		setP2Card1(P2CARD1m);
-		
-		P1CARD3m = glm::translate(P1CARD3m, glm::vec3(4.0f, 0.1f, 3.3f));
-		P1CARD3m = P1CARD3m * myScalingMatrix2;
-		MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
-		setP1Card3(P1CARD3m);
+	/*P2CARD3m = glm::translate(P2CARD3m, glm::vec3(-4.0f, 0.1f, -3.3f));
+	P2CARD3m = P2CARD3m * cardSize * rotation;
+	MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;*/
 
-		P1CARD2m = glm::translate(P1CARD2m, glm::vec3(0.0f, 0.1f, 3.3f));
-		P1CARD2m = P1CARD2m * myScalingMatrix2;
-		MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
-		setP1Card2(P1CARD2m);
+	setP2Card3(setUpCard(P2CARD3m, MVP2, glm::vec3(-4.0f, 0.1f, -3.3f), cardSize, rotation));
 
-		P1CARD1m = glm::translate(P1CARD1m, glm::vec3(-4.0f, 0.1f, 3.3f));
-		P1CARD1m = P1CARD1m * myScalingMatrix2;
-		MVP5 = ProjectionMatrix * ViewMatrix * P1CARD1m;
-		setP1Card1(P1CARD1m);
+	P2CARD2m = glm::translate(P2CARD2m, glm::vec3(-0.0f, 0.1f, -3.3f));
+	P2CARD2m = P2CARD2m * cardSize * rotation;
+	MVP6 = ProjectionMatrix * ViewMatrix * P2CARD2m;
+	setP2Card2(P2CARD2m);
 
-		//creates copys of original positions of cards to rturn to after animations
-		createCopys();
+	P2CARD1m = glm::translate(P2CARD1m, glm::vec3(4.0f, 0.1f, -3.3f));
+	P2CARD1m = P2CARD1m * cardSize * rotation;
+	MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
+	setP2Card1(P2CARD1m);
+
+	P1CARD3m = glm::translate(P1CARD3m, glm::vec3(4.0f, 0.1f, 3.3f));
+	P1CARD3m = P1CARD3m * cardSize;
+	MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
+	setP1Card3(P1CARD3m);
+
+	P1CARD2m = glm::translate(P1CARD2m, glm::vec3(0.0f, 0.1f, 3.3f));
+	P1CARD2m = P1CARD2m * cardSize;
+	MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
+	setP1Card2(P1CARD2m);
+
+	P1CARD1m = glm::translate(P1CARD1m, glm::vec3(-4.0f, 0.1f, 3.3f));
+	P1CARD1m = P1CARD1m * cardSize;
+	MVP5 = ProjectionMatrix * ViewMatrix * P1CARD1m;
+	setP1Card1(P1CARD1m);
+
+	//creates copys of original positions of cards to rturn to after animations
+	createCopys();
 
 	do{
 
@@ -285,17 +295,17 @@ int main( void )
 			nbFrames = 0;
 			lastTime += 1.0;
 		}
-		
+
 		player1Inputs();
 
 		P1CARD1m = getP1Card1();
 		P1CARD2m = getP1Card2();
 		P1CARD3m = getP1Card3();
-		
+
 		P2CARD1m = getP2Card1();
 		P2CARD2m = getP2Card2();
 		P2CARD3m = getP2Card3();
-	
+
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
 		MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
@@ -305,11 +315,11 @@ int main( void )
 
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 		glUseProgram(programID);
-	
+
 		glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]); // This one doesn't change between objects, so this can be done once for all objects that use "programID"
-		
+
 		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP1[0][0]);
 		glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix1[0][0]);
 
@@ -327,7 +337,7 @@ int main( void )
 			GL_FALSE,           // normalized?
 			0,                  // stride
 			(void*)0            // array buffer offset
-		);
+			);
 
 		// 2nd attribute buffer : UVs
 		glEnableVertexAttribArray(1);
@@ -339,7 +349,7 @@ int main( void )
 			GL_FALSE,                         // normalized?
 			0,                                // stride
 			(void*)0                          // array buffer offset
-		);
+			);
 
 		// 3rd attribute buffer : normals
 		glEnableVertexAttribArray(2);
@@ -351,7 +361,7 @@ int main( void )
 			GL_FALSE,                         // normalized?
 			0,                                // stride
 			(void*)0                          // array buffer offset
-		);
+			);
 
 		// Index buffer
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
@@ -362,7 +372,7 @@ int main( void )
 			indices.size(),    // count
 			GL_UNSIGNED_SHORT,   // type
 			(void*)0           // element array buffer offset
-		);
+			);
 
 		drawCard(P2CARD3m,MVP2,Texture2);
 		drawCard(P2CARD1m,MVP3,Texture3);
@@ -370,7 +380,7 @@ int main( void )
 		drawCard(P1CARD1m,MVP5,Texture5);
 		drawCard(P2CARD2m,MVP6,Texture5);
 		drawCard(P1CARD2m,MVP7,Texture4);
-	
+
 
 		////// End of rendering of the second object //////
 
@@ -384,7 +394,7 @@ int main( void )
 
 	} // Check if the ESC key was pressed or the window was closed
 	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-		   glfwWindowShouldClose(window) == 0 );
+		glfwWindowShouldClose(window) == 0 );
 
 	// Cleanup VBO and shader
 	glDeleteBuffers(1, &vertexbuffer);
@@ -401,5 +411,5 @@ int main( void )
 	return 0;
 }
 
-	
+
 
