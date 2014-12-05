@@ -18,6 +18,7 @@ using namespace glm;
 #include "utils/objloader.hpp"
 #include "utils/vboindexer.hpp"
 #include "utils/p1controls.hpp"
+#include "utils/p2controls.hpp"
 
 GLuint Texture;
 GLuint Texture2;
@@ -254,35 +255,51 @@ int main( void )
 	P2CARD3m = P2CARD3m * cardSize * rotation;
 	MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;*/
 
-	setP2Card3(setUpCard(P2CARD3m, MVP2, glm::vec3(-4.0f, 0.1f, -3.3f), cardSize, rotation));
-
+	glm::mat4 temp = setUpCard(P2CARD3m, MVP2, glm::vec3(-4.0f, 0.1f, -3.3f), cardSize, rotation);
+	setP2Card3(temp);
+	setP2_Card3(temp);
+	
 	P2CARD2m = glm::translate(P2CARD2m, glm::vec3(-0.0f, 0.1f, -3.3f));
 	P2CARD2m = P2CARD2m * cardSize * rotation;
 	MVP6 = ProjectionMatrix * ViewMatrix * P2CARD2m;
+
 	setP2Card2(P2CARD2m);
+	setP2_Card2(P2CARD2m);
 
 	P2CARD1m = glm::translate(P2CARD1m, glm::vec3(4.0f, 0.1f, -3.3f));
 	P2CARD1m = P2CARD1m * cardSize * rotation;
 	MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
+
 	setP2Card1(P2CARD1m);
+	setP2_Card1(P2CARD1m);
 
 	P1CARD3m = glm::translate(P1CARD3m, glm::vec3(4.0f, 0.1f, 3.3f));
 	P1CARD3m = P1CARD3m * cardSize;
 	MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
+
 	setP1Card3(P1CARD3m);
+	setP1_Card3(P1CARD3m);
 
 	P1CARD2m = glm::translate(P1CARD2m, glm::vec3(0.0f, 0.1f, 3.3f));
 	P1CARD2m = P1CARD2m * cardSize;
 	MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
+
 	setP1Card2(P1CARD2m);
+	setP1_Card2(P1CARD2m);
 
 	P1CARD1m = glm::translate(P1CARD1m, glm::vec3(-4.0f, 0.1f, 3.3f));
 	P1CARD1m = P1CARD1m * cardSize;
 	MVP5 = ProjectionMatrix * ViewMatrix * P1CARD1m;
+
 	setP1Card1(P1CARD1m);
+	setP1_Card1(P1CARD1m);
+
 
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
+	createCopys_();
+
+	bool playerturn =false;
 
 	do{
 
@@ -296,6 +313,27 @@ int main( void )
 			lastTime += 1.0;
 		}
 
+		//Used for changing player perspective
+		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
+		glm::vec3(0,17,0.001f), 
+		glm::vec3(0,0,0), 
+		glm::vec3(0,1,0)  
+		);
+		playerturn =false;
+	}
+
+		if (glfwGetKey( window, GLFW_KEY_9 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
+		glm::vec3(0,17,0.001f), 
+		glm::vec3(0,0,0), 
+		glm::vec3(0,-1,0)  
+		);
+		playerturn =true;
+	}
+
+		if(!playerturn)
+		{
 		player1Inputs();
 
 		P1CARD1m = getP1Card1();
@@ -305,7 +343,17 @@ int main( void )
 		P2CARD1m = getP2Card1();
 		P2CARD2m = getP2Card2();
 		P2CARD3m = getP2Card3();
+		}
+		else{
+			player2Inputs();
+		P1CARD1m = getP1_Card1();
+		P1CARD2m = getP1_Card2();
+		P1CARD3m = getP1_Card3();
 
+		P2CARD1m = getP2_Card1();
+		P2CARD2m = getP2_Card2();
+		P2CARD3m = getP2_Card3();
+		}
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
 		MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
@@ -380,7 +428,6 @@ int main( void )
 		drawCard(P1CARD1m,MVP5,Texture5);
 		drawCard(P2CARD2m,MVP6,Texture5);
 		drawCard(P1CARD2m,MVP7,Texture4);
-
 
 		////// End of rendering of the second object //////
 

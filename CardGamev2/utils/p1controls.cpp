@@ -75,19 +75,13 @@ void player1Inputs(){
 	{
 		p1card3attack();
 	}
-
-}
-
-void resetSelected1(){
-
-	if(!attackright && !attackleft && !attackmiddle)
+		else if(p1card2selected)
 	{
-		if(!die && !die2 && !die3)
-		{
-			p1card1selected =false;
-		}
+		p1card2attack();
 	}
+
 }
+
 void p1card1attack(){
 
 	if(!attackright && attackleft && !attackmiddle){
@@ -153,6 +147,76 @@ void p1card1attack(){
 			myDistance3=60;
 			 p1card1selectedanimation = false;
 			p1card1selected =false;
+			
+		}
+	}
+}
+
+void p1card2attack(){
+
+	if(!attackright && !attackleft && attackmiddle){
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.05f));
+		myDistance--;
+		if(myDistance <= 0){
+			P1CARD2 = P1CARD2Copy;
+			attackmiddle = false;
+			myDistance = 60;
+			die=true;
+		}
+	}
+	if(die){
+		P2CARD2 = P2CARD2 * dieAnimation;
+		myDistance--;
+		if(myDistance <= 0){
+			P2CARD2 = P2CARD2Copy;
+			die = false;
+			myDistance=60;
+			p1card2selectedanimation = false;
+			p1card2selected =false;
+		}
+	}
+	if(attackright && !attackleft && !attackmiddle){
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.06f, 0.0f, -0.05f));
+		myDistance2--;
+		if(myDistance2 <= 0){
+			P1CARD2 = P1CARD2Copy;
+			attackright = false;
+			myDistance2 = 60;
+			die2=true;
+		}
+	}
+	if(die2){
+		P2CARD1 = P2CARD1 * dieAnimation;
+		myDistance2--;
+		if(myDistance2 <= 0){
+			P2CARD1 = P2CARD1Copy;
+			die2 = false;
+			myDistance2=60;
+			 p1card2selectedanimation = false;
+			p1card2selected =false;
+			
+		}
+	}
+
+	if(!attackright && attackleft && !attackmiddle){
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(-0.06f, 0.0f, -0.05f));
+		myDistance3--;
+		if(myDistance3 <= 0){
+			P1CARD2 = P1CARD2Copy;
+			attackleft = false;
+			myDistance3 = 60;
+			die3=true;
+		}
+	}
+	if(die3){
+		P2CARD3 = P2CARD3 * dieAnimation;
+		myDistance3--;
+		if(myDistance3 <= 0){
+			P2CARD3 = P2CARD3Copy;
+			die3 = false;
+			myDistance3=60;
+			p1card2selectedanimation = false;
+			p1card2selected =false;
 			
 		}
 	}

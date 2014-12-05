@@ -80,6 +80,7 @@
     <ClCompile Include="utils\p1controls.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utils\objloader.cpp" />
+    <ClCompile Include="utils\p2controls.cpp" />
     <ClCompile Include="utils\shader.cpp" />
     <ClCompile Include="utils\texture.cpp" />
     <ClCompile Include="utils\vboindexer.cpp" />
@@ -87,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="utils\p1controls.hpp" />
     <ClInclude Include="utils\objloader.hpp" />
+    <ClInclude Include="utils\p2controls.hpp" />
     <ClInclude Include="utils\shader.hpp" />
     <ClInclude Include="utils\texture.hpp" />
     <ClInclude Include="utils\vboindexer.hpp" />
