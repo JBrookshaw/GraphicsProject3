@@ -92,6 +92,8 @@ void player1Selection(){
 		p1card3selected = false;
 		P1CARD2 = P1CARD2Copy;
 		P1CARD3 = P1CARD3Copy;
+
+	
 	}
 	if(!p1card2selectedanimation && p1card2selected)
 	{
@@ -108,6 +110,7 @@ void player1Selection(){
 	}
 	if(!p1card3selectedanimation && p1card3selected)
 	{
+
 		P1CARD3 = P1CARD3 * selectedCard;
 
 		p1card1selectedanimation=false;
@@ -119,6 +122,7 @@ void player1Selection(){
 
 		P1CARD2 = P1CARD2Copy;
 		P1CARD1 = P1CARD1Copy;
+
 	}
 }
 
@@ -132,7 +136,50 @@ void createCopys(){
 	P2CARD3Copy = P2CARD3;
 }
 
+void p1cardattack(){
+	if(check && ! check2){
+			P1CARD3 = glm::translate(P1CARD3, glm::vec3(0.0f, 0.0f, -0.05f));
+			myDistance--;
+			if(myDistance <= 0){
+				P1CARD3 = P1CARD3Copy;
+				check = false;
+				myDistance = 60;
+				die=true;
+			}
+		}
+		if(die){
+			P2CARD1 = P2CARD1 * dieAnimation;
+			myDistance--;
+			if(myDistance <= 0){
+				P2CARD1 = P2CARD1Copy;
+				die = false;
+				myDistance=60;
+			}
+		}
+		if(check2 && !check){
+			P1CARD3 = glm::translate(P1CARD3, glm::vec3(-0.12f, 0.0f, -0.05f));
+			myDistance2--;
+			if(myDistance2 <= 0){
+				P1CARD3 = P1CARD3Copy;
+				check2 = false;
+				myDistance2 = 60;
+				die2=true;
+			}
+		}
+		if(die2){
+			P2CARD3 = P2CARD3 * dieAnimation;
+			myDistance2--;
+			if(myDistance2 <= 0){
+				P2CARD3 = P2CARD3Copy;
+				die2 = false;
+				myDistance2=60;
+			}
+		}
+
+}
+
 void p1card3attack(){
+		
 	if(check && ! check2){
 			P1CARD3 = glm::translate(P1CARD3, glm::vec3(0.0f, 0.0f, -0.05f));
 				P1CARD3 = glm::translate(P1CARD3, glm::vec3(0.0f, 0.005f, 0.0f));
@@ -174,16 +221,22 @@ void p1card3attack(){
 				myDistance2=60;
 			}
 		}
+
 }
 
 void readInputs(){
+
+if(p1card3selected){
+	
 		if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
 		check = true;
 	}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
 		check2 = true;
 	}
-		else	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
+
+}
+		if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
 		p1card1selected = true;
 		//p1card1selectedanimation = true;
 	}
