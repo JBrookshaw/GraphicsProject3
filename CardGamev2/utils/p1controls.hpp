@@ -10,6 +10,7 @@ void p1card3attack();
 
 int p2Life();
 int p2LifeLoss();
+void p2LifeSet(int life1);
 
 int p1Moves();
 void p1Zero();
