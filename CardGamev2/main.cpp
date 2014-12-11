@@ -373,13 +373,7 @@ int main( void )
 		P2CARD1m = getP2Card1();
 		P2CARD2m = getP2Card2();
 		P2CARD3m = getP2Card3();
-		moves = moves+1;
-		if (moves > 20) {
-
-			playerturn = true;
-			moves = 0; 
-
-		}
+		
 		}
 		else{
 			player2Inputs();
@@ -390,13 +384,7 @@ int main( void )
 		P2CARD1m = getP2_Card1();
 		P2CARD2m = getP2_Card2();
 		P2CARD3m = getP2_Card3();
-		 moves = moves + 1;
-		if (moves > 20) {
-
-			playerturn = false;
-			moves = 0; 
-
-		}
+		
 		}
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
