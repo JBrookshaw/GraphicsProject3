@@ -423,26 +423,37 @@ int main( void )
 			lastTime += 1.0;
 		}
 
-		
+
+		if (p2Moves() > 2) {
+			p2Zero();
+
+			ViewMatrix       = glm::lookAt(
+				glm::vec3(0,17,0.001f), 
+				glm::vec3(0,0,0), 
+				glm::vec3(0,1,0)  
+				);
+			playerturn =false;
+
+
+		}
+
+
+		if (p1Moves() > 2) {
+			p1Zero();
+
+			ViewMatrix   = glm::lookAt(
+				glm::vec3(0,17,0.001f), 
+				glm::vec3(0,0,0), 
+				glm::vec3(0,-1,0)  
+				);
+			playerturn = true;
+
+
+		}
+
 		//Used for changing player perspective
-		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
-		ViewMatrix       = glm::lookAt(
-		glm::vec3(0,17,0.001f), 
-		glm::vec3(0,0,0), 
-		glm::vec3(0,1,0)  
-		);
-		playerturn =false;
-	}
 
-		if (glfwGetKey( window, GLFW_KEY_9 ) == GLFW_PRESS){
-		ViewMatrix       = glm::lookAt(
-		glm::vec3(0,17,0.001f), 
-		glm::vec3(0,0,0), 
-		glm::vec3(0,-1,0)  
-		);
-		playerturn =true;
-	}
-
+	
 		
 
 		if(!playerturn)
