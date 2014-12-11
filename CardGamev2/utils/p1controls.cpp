@@ -315,7 +315,7 @@ void p1card2attack(){
 		if(myDistance4 <= 0){
 			p2LifeCust(2);			//Lose two life, can be more
 			die4 = false;
-			myDistance4=80;
+			myDistance4=60;
 			 p1card2selectedanimation = false;
 			p1card2selected =false;
 			p1attacking = false;
