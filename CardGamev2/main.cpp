@@ -409,8 +409,7 @@ int main( void )
 	createCopys();
 	createCopys_();
 	
-	int moves = 0;
-	bool playerturn =false;
+	bool playerturn = false;
 
 	do{
 
@@ -423,35 +422,28 @@ int main( void )
 			nbFrames = 0;
 			lastTime += 1.0;
 		}
-	if (p2Moves() > 2) {
 
-			
-			ViewMatrix       = glm::lookAt(
+		
+		//Used for changing player perspective
+		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
 		glm::vec3(0,17,0.001f), 
-		glm::vec3(0,0,0),						//Player 1
+		glm::vec3(0,0,0), 
 		glm::vec3(0,1,0)  
 		);
-			p2Zero();
-			playerturn == false;
-		
-		
+		playerturn =false;
+	}
 
-		}
-
-			if (p1Moves() > 2) {
-
-			
-			ViewMatrix       = glm::lookAt(
+		if (glfwGetKey( window, GLFW_KEY_9 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
 		glm::vec3(0,17,0.001f), 
-		glm::vec3(0,0,0),				//Player 2
+		glm::vec3(0,0,0), 
 		glm::vec3(0,-1,0)  
 		);
-			p1Zero();
-		playerturn = true;
-			
-		}
+		playerturn =true;
+	}
 
-
+		
 
 		if(!playerturn)
 		{
