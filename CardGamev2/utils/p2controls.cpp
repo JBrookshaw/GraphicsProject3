@@ -129,7 +129,7 @@ void player2Inputs(){
 void p2card1attack(){
 
 	if(!attack_right && attack_left && !attack_middle && !attack_player){
-		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.0f, 0.0f, -0.05f));
+		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.0f, 0.0f, -0.08f));
 		my_Distance--;
 		if(my_Distance <= 0){
 			P2_CARD1 = P2_CARD1Copy;
@@ -152,7 +152,7 @@ void p2card1attack(){
 		}
 	}
 	if(attack_right && !attack_left && !attack_middle && !attack_player){
-		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.12f, 0.0f, -0.05f));
+		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.12f, 0.0f, -0.08f));
 		my_Distance2--;
 		if(my_Distance2 <= 0){
 			P2_CARD1 = P2_CARD1Copy;
@@ -177,7 +177,7 @@ void p2card1attack(){
 	}
 
 	if(!attack_right && !attack_left && attack_middle && !attack_player){
-		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.06f, 0.0f, -0.05f));
+		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.06f, 0.0f, -0.08f));
 		my_Distance3--;
 		if(my_Distance3 <= 0){
 			P2_CARD1 = P2_CARD1Copy;
@@ -330,7 +330,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 void p2card3attack(){
 
 	if(attack_right && !attack_left && !attack_middle && !attack_player){
-		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(0.0f, 0.0f, -0.05f));
+		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(0.0f, 0.0f, -0.08f));
 		my_Distance--;
 		if(my_Distance <= 0){
 			P2_CARD3 = P2_CARD3Copy;
@@ -353,7 +353,7 @@ void p2card3attack(){
 		}
 	}
 	if(!attack_right && attack_left && !attack_middle && !attack_player){
-		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.12f, 0.0f, -0.05f));
+		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.12f, 0.0f, -0.08f));
 		my_Distance2--;
 		if(my_Distance2 <= 0){
 			P2_CARD3 = P2_CARD3Copy;
@@ -377,7 +377,7 @@ void p2card3attack(){
 	}
 
 	if(!attack_right && !attack_left && attack_middle && !attack_player){
-		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.06f, 0.0f, -0.05f));
+		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.06f, 0.0f, -0.08f));
 		my_Distance3--;
 		if(my_Distance3 <= 0){
 			P2_CARD3 = P2_CARD3Copy;

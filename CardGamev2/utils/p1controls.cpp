@@ -132,7 +132,7 @@ void player1Inputs(){
 void p1card1attack(){
 
 	if(!attackright && attackleft && !attackmiddle && !attackplayer){
-		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.0f, 0.0f, -0.05f));
+		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.0f, 0.0f, -0.08f));
 		myDistance--;
 		if(myDistance <= 0){
 			P1CARD1 = P1CARD1Copy;
@@ -155,7 +155,7 @@ void p1card1attack(){
 		}
 	}
 	if(attackright && !attackleft && !attackmiddle && !attackplayer){
-		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.12f, 0.0f, -0.05f));
+		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.12f, 0.0f, -0.08f));
 		myDistance2--;
 		if(myDistance2 <= 0){
 			P1CARD1 = P1CARD1Copy;
@@ -180,7 +180,7 @@ void p1card1attack(){
 	}
 
 	if(!attackright && !attackleft && attackmiddle && !attackplayer){
-		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.06f, 0.0f, -0.05f));
+		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.06f, 0.0f, -0.08f));
 		myDistance3--;
 		if(myDistance3 <= 0){
 			P1CARD1 = P1CARD1Copy;
@@ -234,7 +234,7 @@ void p1card1attack(){
 void p1card2attack(){
 
 	if(!attackright && !attackleft && attackmiddle && !attackplayer){
-		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.05f));
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.06f));
 		myDistance--;
 		if(myDistance <= 0){
 			P1CARD2 = P1CARD2Copy;
@@ -257,7 +257,7 @@ void p1card2attack(){
 		}
 	}
 	if(attackright && !attackleft && !attackmiddle && !attackplayer){
-		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.06f, 0.0f, -0.05f));
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.06f, 0.0f, -0.06f));
 		myDistance2--;
 		if(myDistance2 <= 0){
 			P1CARD2 = P1CARD2Copy;
@@ -282,7 +282,7 @@ void p1card2attack(){
 	}
 
 	if(!attackright && attackleft && !attackmiddle && !attackplayer){
-		P1CARD2 = glm::translate(P1CARD2, glm::vec3(-0.06f, 0.0f, -0.05f));
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(-0.06f, 0.0f, -0.06f));
 		myDistance3--;
 		if(myDistance3 <= 0){
 			P1CARD2 = P1CARD2Copy;
@@ -336,7 +336,7 @@ void p1card2attack(){
 void p1card3attack(){
 
 	if(attackright && !attackleft && !attackmiddle && !attackplayer){
-		P1CARD3 = glm::translate(P1CARD3, glm::vec3(0.0f, 0.0f, -0.05f));
+		P1CARD3 = glm::translate(P1CARD3, glm::vec3(0.0f, 0.0f, -0.08f));
 		myDistance--;
 		if(myDistance <= 0){
 			P1CARD3 = P1CARD3Copy;
@@ -359,7 +359,7 @@ void p1card3attack(){
 		}
 	}
 	if(!attackright && attackleft && !attackmiddle && !attackplayer){
-		P1CARD3 = glm::translate(P1CARD3, glm::vec3(-0.12f, 0.0f, -0.05f));
+		P1CARD3 = glm::translate(P1CARD3, glm::vec3(-0.12f, 0.0f, -0.08f));
 		myDistance2--;
 		if(myDistance2 <= 0){
 			P1CARD3 = P1CARD3Copy;
@@ -383,7 +383,7 @@ void p1card3attack(){
 	}
 
 	if(!attackright && !attackleft && attackmiddle && !attackplayer){
-		P1CARD3 = glm::translate(P1CARD3, glm::vec3(-0.06f, 0.0f, -0.05f));
+		P1CARD3 = glm::translate(P1CARD3, glm::vec3(-0.06f, 0.0f, -0.08f));
 		myDistance3--;
 		if(myDistance3 <= 0){
 			P1CARD3 = P1CARD3Copy;
