@@ -372,21 +372,17 @@ void readInputs_(){
 			attack_middle =true;
 			p2attacking = true;
 		}
-	}
-	
 
 	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
 		p2card1selected = true;
-		//p2card1selectedanimation = true;
 	}
 	else	if (glfwGetKey( window, GLFW_KEY_2 ) == GLFW_PRESS){
 		p2card2selected = true;
-		//p2card2selectedanimation = true;
 	}
 	else	if (glfwGetKey( window, GLFW_KEY_3 ) == GLFW_PRESS){
 		p2card3selected = true;
-		//p2card3selectedanimation = true;
 	}
+	}//end if attacking
 }
 
 glm::mat4 getP1_Card1(){

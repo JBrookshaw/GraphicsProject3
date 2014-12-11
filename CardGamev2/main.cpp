@@ -26,22 +26,12 @@ using namespace glm;
 #include "utils/p2controls.hpp"
 #include "utils/text2D.hpp"
 
-
-
-//Freetype Variables
-
-
-
-
-
-
 GLuint Texture;
 GLuint Texture2;
 GLuint Texture3;
 GLuint Texture4;
 GLuint Texture5;
-
-
+GLuint Texture6;
 
 GLuint VertexArrayID;
 
@@ -107,8 +97,6 @@ glm::mat4 setUpCard(glm::mat4 MODEL, glm::mat4 MVP, glm::vec3 TRANS, glm::mat4 S
 	MVP = ProjectionMatrix * ViewMatrix * MODEL;
 	return MODEL;
 }
-
-
 
 void drawText(const char *text, int length, int x, int y){
  glMatrixMode(GL_PROJECTION); // change the current matrix to PROJECTION
@@ -212,6 +200,7 @@ int main( void )
 	Texture3 = loadDDS("tex/gauto.DDS");
 	Texture4 = loadDDS("tex/dfsen.DDS");
 	Texture5 = loadDDS("tex/aceace.DDS");
+	Texture6 = loadDDS("tex/ipilot.DDS");
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -289,6 +278,8 @@ int main( void )
 		vec4( 0.0, 0.0, 0.0, 1.0)
 		);
 
+	glm::mat4 norotaion = glm::scale(1.0f, 1.0f , 1.0f);
+
 	mat4 dieAnimation = myScalingMatrix3*rotation2;
 
 	ProjectionMatrix = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -304,48 +295,29 @@ int main( void )
 	ModelMatrix1 = ModelMatrix1 * myScalingMatrix;
 	MVP1 = ProjectionMatrix * ViewMatrix * ModelMatrix1;
 
-	/*P2CARD3m = glm::translate(P2CARD3m, glm::vec3(-4.0f, 0.1f, -3.3f));
-	P2CARD3m = P2CARD3m * cardSize * rotation;
-	MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;*/
-
 	glm::mat4 temp = setUpCard(P2CARD3m, MVP2, glm::vec3(-4.0f, 0.1f, -3.3f), cardSize, rotation);
 	setP2Card3(temp);
 	setP2_Card3(temp);
 	
-	P2CARD2m = glm::translate(P2CARD2m, glm::vec3(-0.0f, 0.1f, -3.3f));
-	P2CARD2m = P2CARD2m * cardSize * rotation;
-	MVP6 = ProjectionMatrix * ViewMatrix * P2CARD2m;
+	temp = setUpCard(P2CARD2m, MVP6, glm::vec3(-0.0f, 0.1f, -3.3f), cardSize, rotation);
+	setP2Card2(temp);
+	setP2_Card2(temp);
 
-	setP2Card2(P2CARD2m);
-	setP2_Card2(P2CARD2m);
+	temp = setUpCard(P2CARD1m, MVP3, glm::vec3(4.0f, 0.1f, -3.3f), cardSize, rotation);
+	setP2Card1(temp);
+	setP2_Card1(temp);
 
-	P2CARD1m = glm::translate(P2CARD1m, glm::vec3(4.0f, 0.1f, -3.3f));
-	P2CARD1m = P2CARD1m * cardSize * rotation;
-	MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
+	temp = setUpCard(P1CARD3m, MVP4, glm::vec3(4.0f, 0.1f, 3.3f), cardSize, norotaion);
+	setP1Card3(temp);
+	setP1_Card3(temp);
 
-	setP2Card1(P2CARD1m);
-	setP2_Card1(P2CARD1m);
+	temp = setUpCard(P1CARD2m, MVP7, glm::vec3(0.0f, 0.1f, 3.3f), cardSize, norotaion);
+	setP1Card2(temp);
+	setP1_Card2(temp);
 
-	P1CARD3m = glm::translate(P1CARD3m, glm::vec3(4.0f, 0.1f, 3.3f));
-	P1CARD3m = P1CARD3m * cardSize;
-	MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
-
-	setP1Card3(P1CARD3m);
-	setP1_Card3(P1CARD3m);
-
-	P1CARD2m = glm::translate(P1CARD2m, glm::vec3(0.0f, 0.1f, 3.3f));
-	P1CARD2m = P1CARD2m * cardSize;
-	MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
-
-	setP1Card2(P1CARD2m);
-	setP1_Card2(P1CARD2m);
-
-	P1CARD1m = glm::translate(P1CARD1m, glm::vec3(-4.0f, 0.1f, 3.3f));
-	P1CARD1m = P1CARD1m * cardSize;
-	MVP5 = ProjectionMatrix * ViewMatrix * P1CARD1m;
-
-	setP1Card1(P1CARD1m);
-	setP1_Card1(P1CARD1m);
+	temp = setUpCard(P1CARD1m, MVP5, glm::vec3(-4.0f, 0.1f, 3.3f), cardSize, norotaion);
+	setP1Card1(temp);
+	setP1_Card1(temp);
 
 	initText2D( "tex/Holstein.DDS" );
 

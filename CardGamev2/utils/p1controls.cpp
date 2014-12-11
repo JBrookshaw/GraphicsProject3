@@ -177,6 +177,7 @@ void p1card2attack(){
 			myDistance=60;
 			p1card2selectedanimation = false;
 			p1card2selected =false;
+			p1attacking = false;
 		}
 	}
 	if(attackright && !attackleft && !attackmiddle){
@@ -198,6 +199,7 @@ void p1card2attack(){
 			myDistance2=60;
 			 p1card2selectedanimation = false;
 			p1card2selected =false;
+			p1attacking = false;
 			
 		}
 	}
@@ -221,6 +223,7 @@ void p1card2attack(){
 			myDistance3=60;
 			p1card2selectedanimation = false;
 			p1card2selected =false;
+			p1attacking = false;
 			
 		}
 	}
@@ -247,6 +250,7 @@ void p1card3attack(){
 			myDistance=60;
 			 p1card3selectedanimation = false;
 			p1card3selected =false;
+			p1attacking = false;
 		}
 	}
 	if(!attackright && attackleft && !attackmiddle){
@@ -268,6 +272,7 @@ void p1card3attack(){
 			myDistance2=60;
 			 p1card3selectedanimation = false;
 			p1card3selected =false;
+			p1attacking = false;
 		}
 	}
 
@@ -290,6 +295,7 @@ void p1card3attack(){
 			myDistance3=60;
 			 p1card3selectedanimation = false;
 			p1card3selected =false;
+			p1attacking = false;
 		}
 	}
 }
@@ -355,18 +361,21 @@ void readInputs(){
 			attackright = true;
 			attackleft=false;
 			attackmiddle =false;
+			p1attacking = true;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
 			attackleft=true;
 			attackmiddle =false;
+			p1attacking = true;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
 			attackleft=false;
 			attackmiddle =true;
+			p1attacking = true;
 		}
-	}
+
 
 	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
 		p1card1selected = true;
@@ -380,6 +389,7 @@ void readInputs(){
 		p1card3selected = true;
 		//p1card3selectedanimation = true;
 	}
+		}//end if attacking
 }
 
 glm::mat4 getP1Card1(){
