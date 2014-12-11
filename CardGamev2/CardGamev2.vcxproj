@@ -39,6 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\openGL\freeglut-2.8.1\include;C:\Users\RRuts_000\Desktop\OpenGL-tutorial_v0014_21\external\glm-0.9.4.0;C:\Users\RRuts_000\Desktop\OpenGL-tutorial_v0014_21\external\glew-1.9.0\include;C:\Users\RRuts_000\Desktop\OpenGL-tutorial_v0014_21\external\glfw-3.0.3\include;C:\Users\RRuts_000\Desktop\OpenGL-tutorial_v0014_21\external\glew-1.9.0\bin;C:\assimp-3.0.1270\contrib\zlib\Debug;C:\openGL\freetype-2.5.4\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,8 +56,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\opengl-wrappers\glew\glew-1.9.0\lib;C:\opengl-wrappers\glfw-3.0.1.bin.WIN32\lib-msvc100;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;C:\assimp-3.0.1270\code\Debug\assimp.lib;C:\assimp-3.0.1270\contrib\zlib\Debug\zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\openGL\freeglut-2.8.1\lib;C:\openGL\freetype-2.5.4\objs\vc2010\Win32\Debug;C:\openGL\glew-1.9.0\lib;C:\openGL\glfw-3.0.3.bin.WIN32\lib-msvc100;C:\opengl-wrappers\glew\glew-1.9.0\lib;C:\opengl-wrappers\glfw-3.0.1.bin.WIN32\lib-msvc100;C:\openGL\freetype-2.5.4\objs\vc2010\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;C:\assimp-3.0.1270\code\Debug\assimp.lib;C:\assimp-3.0.1270\contrib\zlib\Debug\zlibd.lib;C:\openGL\freetype-2.5.4\objs\vc2010\Win32\freetype254d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,6 +83,7 @@
     <ClCompile Include="utils\objloader.cpp" />
     <ClCompile Include="utils\p2controls.cpp" />
     <ClCompile Include="utils\shader.cpp" />
+    <ClCompile Include="utils\text2D.cpp" />
     <ClCompile Include="utils\texture.cpp" />
     <ClCompile Include="utils\vboindexer.cpp" />
   </ItemGroup>
@@ -90,6 +92,7 @@
     <ClInclude Include="utils\objloader.hpp" />
     <ClInclude Include="utils\p2controls.hpp" />
     <ClInclude Include="utils\shader.hpp" />
+    <ClInclude Include="utils\text2D.hpp" />
     <ClInclude Include="utils\texture.hpp" />
     <ClInclude Include="utils\vboindexer.hpp" />
   </ItemGroup>
@@ -104,6 +107,8 @@
     <None Include="Debug\CL.write.1.tlog" />
     <None Include="Debug\vc100.idb" />
     <None Include="Debug\vc100.pdb" />
+    <None Include="shaders\TextVertexShader.fragmentshader" />
+    <None Include="shaders\TextVertexShader.vertexshader" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="Debug\objloader.obj" />

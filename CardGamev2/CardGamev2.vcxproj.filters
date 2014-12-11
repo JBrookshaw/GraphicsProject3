@@ -36,6 +36,9 @@
     <ClCompile Include="utils\p2controls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utils\text2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\objloader.hpp">
@@ -56,6 +59,9 @@
     <ClInclude Include="utils\p2controls.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="utils\text2D.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug\CardGamev2.Build.CppClean.log" />
@@ -68,6 +74,8 @@
     <None Include="Debug\CL.read.1.tlog" />
     <None Include="Debug\CL.write.1.tlog" />
     <None Include="Debug\vc100.idb" />
+    <None Include="shaders\TextVertexShader.fragmentshader" />
+    <None Include="shaders\TextVertexShader.vertexshader" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="Debug\objloader.obj" />
