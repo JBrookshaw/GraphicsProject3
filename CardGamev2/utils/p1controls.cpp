@@ -60,7 +60,7 @@ int player2 = 40;
 bool turn = false;
 bool p1attacking = false;
 
-float myDistance = 60, myDistance2 =60, myDistance3 = 60, myDistance4 = 80;
+float myDistance = 60, myDistance2 =60, myDistance3 = 60, myDistance4 = 60;
 
 bool attackright = false, attackleft = false, attackmiddle = false, attackplayer = false;
 bool die = false, die2 = false, die3 = false, die4 = false;
@@ -80,6 +80,14 @@ int p2LifeLoss(int loss) {
 	player2 = player2 - loss;
 
 	return player2;
+}
+
+void p2LifeCust(int loss) {
+
+
+	player2 = player2 - loss;
+
+	
 }
 
 
@@ -187,7 +195,7 @@ void p1card1attack(){
 		if(myDistance4 <= 0){
 			P1CARD1 = P1CARD1Copy;			
 			attackmiddle = false;
-			myDistance4 = 80;
+			myDistance4 = 60;
 			die4=true;
 		}
 	}
@@ -196,9 +204,9 @@ void p1card1attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
-			player2 = player2-2;			//THIS NEEDS TO BE OPPOSITE PLAYER
+			p2LifeCust(2);			//Lose 2 Life, can be more.
 			die4 = false;
-			myDistance4=80;
+			myDistance4=60;
 			 p1card1selectedanimation = false;
 			p1card1selected =false;
 			p1attacking = false;
@@ -284,7 +292,7 @@ void p1card2attack(){
 		if(myDistance4 <= 0){
 			P1CARD2 = P1CARD2Copy;			
 			attackmiddle = false;
-			myDistance4 = 80;
+			myDistance4 = 60;
 			die4=true;
 		}
 	}
@@ -293,11 +301,11 @@ void p1card2attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
-			P2CARD2 = P2CARD2Copy;			//THIS NEEDS TO BE OPPOSITE PLAYER
+			p2LifeCust(2);			//Lose two life, can be more
 			die4 = false;
 			myDistance4=80;
-			 p1card1selectedanimation = false;
-			p1card1selected =false;
+			 p1card2selectedanimation = false;
+			p1card2selected =false;
 			p1attacking = false;
 			
 		}
@@ -379,7 +387,7 @@ void p1card3attack(){
 		if(myDistance4 <= 0){
 			P1CARD3 = P1CARD3Copy;			
 			attackmiddle = false;
-			myDistance4 = 80;
+			myDistance4 = 60;
 			die4=true;
 		}
 	}
@@ -388,11 +396,11 @@ void p1card3attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;			// Life Subtraction
 		myDistance4--;
 		if(myDistance4 <= 0){
-			P2CARD2 = P2CARD2Copy;			//Life Subtraction
+			p2LifeCust(2);			//Life Subtraction
 			die4 = false;
-			myDistance4=80;
-			 p1card1selectedanimation = false;
-			p1card1selected =false;
+			myDistance4=60;
+			 p1card3selectedanimation = false;
+			p1card3selected =false;
 			p1attacking = false;
 			
 		}

@@ -1,9 +1,9 @@
-﻿Build started 12/11/2014 6:14:09 AM.
+﻿Build started 12/11/2014 6:36:57 AM.
      1>Project "C:\Users\RRuts_000\Documents\Graphics Project\GraphicsProject3\CardGamev2\CardGamev2.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\CardGamev2.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\opengl-wrappers\glfw-3.0.1.bin.WIN32\include" /I"C:\opengl-wrappers\glew\glew-1.9.0\include" /I"C:\Users\JBrookshaw\Documents\Visual Studio 2010\Projects\CardGame_v2\GraphicsProject\CardGamev2\external\assimp\include" /I"C:\glm-0.9.4.0" /I"C:\freeglut-2.8.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp utils\objloader.cpp utils\p1controls.cpp utils\p2controls.cpp utils\shader.cpp utils\text2D.cpp utils\texture.cpp utils\vboindexer.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\opengl-wrappers\glfw-3.0.1.bin.WIN32\include" /I"C:\opengl-wrappers\glew\glew-1.9.0\include" /I"C:\Users\JBrookshaw\Documents\Visual Studio 2010\Projects\CardGame_v2\GraphicsProject\CardGamev2\external\assimp\include" /I"C:\glm-0.9.4.0" /I"C:\freeglut-2.8.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp utils\objloader.cpp utils\p1controls.cpp utils\shader.cpp utils\text2D.cpp utils\texture.cpp utils\vboindexer.cpp
          vboindexer.cpp
          texture.cpp
      1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\utils\texture.cpp(23): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -12,7 +12,6 @@
                  c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
          text2D.cpp
          shader.cpp
-         p2controls.cpp
          p1controls.cpp
          objloader.cpp
      1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\utils\objloader.cpp(34): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -27,16 +26,9 @@
                  c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(253) : see declaration of 'fscanf'
      1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\utils\objloader.cpp(67): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(253) : see declaration of 'fscanf'
-         main.cpp
-     1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\main.cpp(475): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
-     1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\main.cpp(479): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
-     1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\main.cpp(484): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
-     1>c:\users\rruts_000\documents\graphics project\graphicsproject3\cardgamev2\main.cpp(488): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
          Generating Code...
+         Skipping... (no relevant changes detected)
+         main.cpp
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\CardGamev2.exe.embed.manifest.res" Debug\CardGamev2_manifest.rc 
        Link:
@@ -76,4 +68,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.44
+Time Elapsed 00:00:03.17

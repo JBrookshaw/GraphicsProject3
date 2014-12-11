@@ -54,7 +54,7 @@ int player1 = 40;
 bool turn2 = false;
 bool p2attacking = false;
 
-float my_Distance = 60, my_Distance2 =60, my_Distance3 = 60, my_Distance4= 80;
+float my_Distance = 60, my_Distance2 =60, my_Distance3 = 60, my_Distance4= 60;
 
 bool attack_right = false, attack_left = false, attack_middle = false, attack_player = false;
 bool die_ = false, die_2 = false, die_3 = false,	die_4 = false;
@@ -76,6 +76,14 @@ int p1LifeLoss(int loss) {
 	player1 = player1 - loss;
 
 	return player1;
+}
+
+void p1LifeCust(int loss) {
+
+
+	player1 = player1 - loss;
+
+	
 }
 
 
@@ -185,17 +193,17 @@ void p2card1attack(){
 		if(my_Distance4 <= 0){
 			P2_CARD1 = P2_CARD1Copy;
 			attack_middle = false;
-			my_Distance4 = 80;
+			my_Distance4 = 60;
 			die_4=true;
 		}
 	}
 	if(die_4){
-		P1_CARD2 = P1_CARD2 * die_Animation; // Changed to life subtraction
+		P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
-			P1_CARD2 = P1_CARD2Copy;		// Life Subtraction
+			p1LifeCust(2);		// Life Subtraction
 			die_4 = false;
-			my_Distance4=80;
+			my_Distance4=60;
 			 p2card1selectedanimation = false;
 			p2card1selected =false;
 			p2attacking = false;
@@ -281,19 +289,19 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 		if(my_Distance4 <= 0){
 			P2_CARD2 = P2_CARD2Copy;
 			attack_middle = false;
-			my_Distance4 = 80;
+			my_Distance4 = 60;
 			die_4=true;
 		}
 	}
 	if(die_4){
-		P1_CARD2 = P1_CARD2 * die_Animation; // Changed to life subtraction
+		P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
-			P1_CARD2 = P1_CARD2Copy;		// Life Subtraction
+			p1LifeCust(2);		// Life Subtraction
 			die_4 = false;
-			my_Distance4=80;
-			 p2card1selectedanimation = false;
-			p2card1selected =false;
+			my_Distance4=60;
+			 p2card3selectedanimation = false;
+			p2card3selected =false;
 			p2attacking = false;
 			
 		}
@@ -375,19 +383,19 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 		if(my_Distance4 <= 0){
 			P2_CARD3 = P2_CARD3Copy;
 			attack_middle = false;
-			my_Distance4 = 80;
+			my_Distance4 = 60;
 			die_4=true;
 		}
 	}
 	if(die_4){
-		P1_CARD2 = P1_CARD2 * die_Animation; // Changed to life subtraction
+		P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
-			P1_CARD2 = P1_CARD2Copy;		// Life Subtraction
+			p1LifeCust(2);		// Life Subtraction
 			die_4 = false;
-			my_Distance4=80;
-			 p2card1selectedanimation = false;
-			p2card1selected =false;
+			my_Distance4=60;
+			 p2card3selectedanimation = false;
+			p2card3selected =false;
 			p2attacking = false;
 			
 		}
