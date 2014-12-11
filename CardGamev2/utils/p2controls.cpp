@@ -198,7 +198,7 @@ void p2card1attack(){
 		}
 	}
 	if(!attack_right && !attack_left && !attack_middle && attack_player){
-		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.06f, 0.0f, -0.09f)); //Third Number Adjusted to .09 from .05
+		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.06f, 0.0f, -0.19f)); //Third Number Adjusted to .09 from .05
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			P2_CARD1 = P2_CARD1Copy;
@@ -208,7 +208,7 @@ void p2card1attack(){
 		}
 	}
 	if(die_4){
-		P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
+		//P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			p1LifeCust(2);		// Life Subtraction
@@ -295,7 +295,7 @@ void p2card2attack(){
 		}
 	}
 if(!attack_right && !attack_left && !attack_middle && attack_player){
-		P2_CARD2 = glm::translate(P2_CARD2, glm::vec3(0.0f, 0.0f, -0.09f)); // ADJusted to middle back
+		P2_CARD2 = glm::translate(P2_CARD2, glm::vec3(0.0f, 0.0f, -0.19f)); // ADJusted to middle back
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			P2_CARD2 = P2_CARD2Copy;
@@ -305,7 +305,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 		}
 	}
 	if(die_4){
-		P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
+		//P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			p1LifeCust(2);		// Life Subtraction
@@ -390,7 +390,7 @@ void p2card3attack(){
 		}
 	}
 if(!attack_right && !attack_left && !attack_middle && attack_player){
-		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.06f, 0.0f, -0.09f)); // Adjusted third number to .09
+		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.06f, 0.0f, -0.19f)); // Adjusted third number to .09
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			P2_CARD3 = P2_CARD3Copy;
@@ -400,7 +400,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 		}
 	}
 	if(die_4){
-		P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
+		//P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			p1LifeCust(2);		// Life Subtraction

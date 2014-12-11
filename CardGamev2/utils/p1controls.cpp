@@ -201,7 +201,7 @@ void p1card1attack(){
 		}
 	}
 	if(!attackright && !attackleft && !attackmiddle && attackplayer){
-		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.0f, 0.0f, -0.05f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
+		P1CARD1 = glm::translate(P1CARD1, glm::vec3(0.06f, 0.0f, -0.19f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD1 = P1CARD1Copy;			
@@ -212,7 +212,7 @@ void p1card1attack(){
 	}
 
 	if(die4){
-		P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
+		//P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
 			p2LifeCust(2);			//Lose 2 Life, can be more.
@@ -299,7 +299,7 @@ void p1card2attack(){
 		}
 	}
 	if(!attackright && !attackleft && !attackmiddle && attackplayer){
-		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.05f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.019f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD2 = P1CARD2Copy;			
@@ -310,7 +310,7 @@ void p1card2attack(){
 	}
 
 	if(die4){
-		P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
+		//P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
 			p2LifeCust(2);			//Lose two life, can be more
@@ -395,7 +395,7 @@ void p1card3attack(){
 		}
 	}
 	if(!attackright && !attackleft && !attackmiddle && attackplayer){
-		P1CARD3 = glm::translate(P1CARD3, glm::vec3(0.0f, 0.0f, -0.05f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
+		P1CARD3 = glm::translate(P1CARD3, glm::vec3(-0.06f, 0.0f, -0.19f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD3 = P1CARD3Copy;			
@@ -406,7 +406,7 @@ void p1card3attack(){
 	}
 
 	if(die4){
-		P2CARD2 = P2CARD2 * dieAnimation;			// Life Subtraction
+		//P2CARD2 = P2CARD2 * dieAnimation;			// Life Subtraction
 		myDistance4--;
 		if(myDistance4 <= 0){
 			p2LifeCust(2);			//Life Subtraction

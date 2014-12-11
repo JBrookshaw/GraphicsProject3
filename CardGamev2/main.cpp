@@ -424,7 +424,7 @@ int main( void )
 		}
 
 
-		if (p2Moves() > 2) {
+		if (p2Moves() == 2) {
 			p2Zero();
 
 			ViewMatrix       = glm::lookAt(
@@ -433,12 +433,13 @@ int main( void )
 				glm::vec3(0,1,0)  
 				);
 			playerturn =false;
+			
 
 
 		}
 
 
-		if (p1Moves() > 2) {
+		if (p1Moves() == 2) {
 			p1Zero();
 
 			ViewMatrix   = glm::lookAt(
