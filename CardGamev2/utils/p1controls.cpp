@@ -194,7 +194,7 @@ void p1card1attack(){
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD1 = P1CARD1Copy;			
-			attackmiddle = false;
+			attackplayer = false;
 			myDistance4 = 60;
 			die4=true;
 		}
@@ -291,7 +291,7 @@ void p1card2attack(){
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD2 = P1CARD2Copy;			
-			attackmiddle = false;
+			attackplayer = false;
 			myDistance4 = 60;
 			die4=true;
 		}
@@ -386,7 +386,7 @@ void p1card3attack(){
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD3 = P1CARD3Copy;			
-			attackmiddle = false;
+			attackplayer = false;
 			myDistance4 = 60;
 			die4=true;
 		}
