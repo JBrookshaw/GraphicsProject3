@@ -148,6 +148,7 @@ void p2card1attack(){
 			p2card1selectedanimation = false;
 			p2card1selected =false;
 			p2attacking = false;
+			moves1++;
 		}
 	}
 	if(attack_right && !attack_left && !attack_middle && !attack_player){
@@ -170,6 +171,7 @@ void p2card1attack(){
 			 p2card1selectedanimation = false;
 			p2card1selected =false;
 			p2attacking = false;
+			moves1++;
 			
 		}
 	}
@@ -194,6 +196,7 @@ void p2card1attack(){
 			 p2card1selectedanimation = false;
 			p2card1selected =false;
 			p2attacking = false;
+			moves1++;
 			
 		}
 	}
@@ -217,6 +220,7 @@ void p2card1attack(){
 			 p2card1selectedanimation = false;
 			p2card1selected =false;
 			p2attacking = false;
+			moves1++;
 			
 		}
 	}
@@ -245,6 +249,7 @@ void p2card2attack(){
 			p2card2selectedanimation = false;
 			p2card2selected =false;
 			p2attacking = false;
+			moves1++;
 		}
 	}
 	if(attack_right && !attack_left && !attack_middle && !attack_player){
@@ -267,6 +272,7 @@ void p2card2attack(){
 			 p2card2selectedanimation = false;
 			p2card2selected =false;
 			p2attacking = false;
+			moves1++;
 			
 		}
 	}
@@ -291,6 +297,7 @@ void p2card2attack(){
 			p2card2selectedanimation = false;
 			p2card2selected =false;
 			p2attacking = false;
+			moves1++;
 			
 		}
 	}
@@ -311,10 +318,10 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 			p1LifeCust(2);		// Life Subtraction
 			die_4 = false;
 			my_Distance4=60;
-			 p2card3selectedanimation = false;
-			p2card3selected =false;
+			 p2card2selectedanimation = false;
+			p2card2selected =false;
 			p2attacking = false;
-			
+			moves1++;
 		}
 	}
 	
@@ -342,6 +349,7 @@ void p2card3attack(){
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
 			p2attacking = false;
+			moves1++;
 		}
 	}
 	if(!attack_right && attack_left && !attack_middle && !attack_player){
@@ -364,6 +372,7 @@ void p2card3attack(){
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
 			p2attacking = false;
+			moves1++;
 		}
 	}
 
@@ -387,6 +396,7 @@ void p2card3attack(){
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
 			p2attacking = false;
+			moves1++;
 		}
 	}
 if(!attack_right && !attack_left && !attack_middle && attack_player){
@@ -409,7 +419,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
 			p2attacking = false;
-			
+			moves1++;
 		}
 	}
 	
@@ -478,7 +488,7 @@ void readInputs_(){
 			attack_player = false;
 
 			p2attacking = true;
-			moves1++;
+			
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
@@ -486,7 +496,7 @@ void readInputs_(){
 			attack_middle =false;
 			attack_player = false;
 			p2attacking = true;
-			moves1++;
+			
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
@@ -494,7 +504,7 @@ void readInputs_(){
 			attack_middle =true;
 			attack_player = false;
 			p2attacking = true;
-			moves1++;
+			
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
@@ -502,7 +512,7 @@ void readInputs_(){
 			attack_middle =false;
 			attack_player = true;
 			p2attacking = true;
-			moves1++;
+			
 
 		}
 
