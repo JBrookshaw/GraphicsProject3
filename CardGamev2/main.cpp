@@ -98,29 +98,6 @@ glm::mat4 setUpCard(glm::mat4 MODEL, glm::mat4 MVP, glm::vec3 TRANS, glm::mat4 S
 	return MODEL;
 }
 
-void drawText(const char *text, int length, int x, int y){
- glMatrixMode(GL_PROJECTION); // change the current matrix to PROJECTION
- double matrix[16]; // 16 doubles in stack memory
- glGetDoublev(GL_PROJECTION_MATRIX, matrix); // get the values from PROJECTION matrix to local variable
- glLoadIdentity(); // reset PROJECTION matrix to identity matrix
- glOrtho(0, 800, 0, 600, -5, 5); // orthographic perspective
- glMatrixMode(GL_MODELVIEW); // change current matrix to MODELVIEW matrix again
- glLoadIdentity(); // reset it to identity matrix
- glPushMatrix(); // push current state of MODELVIEW matrix to stack
- glLoadIdentity(); // reset it again. (may not be required, but it my convention)
- glRasterPos2i(x, y); // raster position in 2D
- for(int i=0; i<length; i++){
-  glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)text[i]); // generation of characters in our text with 9 by 15 GLU font
- }
- glPopMatrix(); // get MODELVIEW matrix value from stack
- glMatrixMode(GL_PROJECTION); // change current matrix mode to PROJECTION
- glLoadMatrixd(matrix); // reset
- glMatrixMode(GL_MODELVIEW); // change current matrix mode to MODELVIEW
-}
- 
-
-
-
 
 void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glActiveTexture(GL_TEXTURE0);
@@ -140,6 +117,12 @@ void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer2);
 
 	glDrawElements(GL_TRIANGLES, indices2.size(), GL_UNSIGNED_SHORT, (void*)0);
+}
+
+void lifeCountdown(int life) {
+
+life = life - 1; 
+printf("%d", life);
 }
 
 
@@ -461,9 +444,28 @@ int main( void )
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 
+		char text1[256];
+		sprintf(text1,"Life:", glfwGetTime() );
+		printText2D(text1, 620, 520, 25); // Top
+
+		char textLife1[256];
+		sprintf(textLife1,"12", glfwGetTime() );
+		printText2D(textLife1, 750, 520, 25); // Top Life Total
+
+
 		char text[256];
-		sprintf(text,"Test", glfwGetTime() );
-		printText2D(text, 10, 500, 60);
+		sprintf(text,"Life:", glfwGetTime() );
+		printText2D(text, 620, 80, 25); // Bottom
+
+		char textLife[256];
+		sprintf(textLife,"%.2f sec");
+		printText2D(textLife, 720, 300, 25); // Bottom Life Total  X, Y, Size
+		
+
+		//char text3[256];
+		//sprintf(text3,"%.2f sec", glfwGetTime() );
+		//printText2D(text3, 10, 500, 60);
+
 
 		// Swap buffers
 		glfwSwapBuffers(window);
@@ -482,7 +484,7 @@ int main( void )
 	glDeleteTextures(1, &Texture);
 	glDeleteVertexArrays(1, &VertexArrayID);
 
-
+		cleanupText2D();
 
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
