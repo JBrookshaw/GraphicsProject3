@@ -428,6 +428,9 @@ int main( void )
 
 	initText2D( "tex/Holstein.DDS" );
 
+	int test2 = p2Life();
+		int test1 = p2Life();
+
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
 	createCopys_();
@@ -448,6 +451,9 @@ int main( void )
 
 
 		if (p2Moves() == 2) {
+			
+		
+			
 			p2Zero();
 
 			ViewMatrix       = glm::lookAt(
@@ -457,12 +463,17 @@ int main( void )
 				);
 			playerturn =false;
 
+			
+			
+
 
 
 		}
 
 
 		if (p1Moves() == 2) {
+			
+
 			p1Zero();
 
 			ViewMatrix   = glm::lookAt(
@@ -471,7 +482,8 @@ int main( void )
 				glm::vec3(0,-1,0)  
 				);
 			playerturn = true;
-
+			
+			
 
 		}
 
@@ -660,32 +672,54 @@ int main( void )
 		glDisable(GL_BLEND);
 
 
+		
+
 		char text1[256];
-		sprintf(text1,"Life:", glfwGetTime() );
-		printText2D(text1, 550, 540, 25); // Top
-
-
-
-
+		
 		char textLife1[256];
-		sprintf(textLife1,"%d", p1Life());
-		printText2D(textLife1, 700, 540, 25); // Top Life Total
-
+		char textLife[256];
 		char text[256];
 		sprintf(text,"Life:", glfwGetTime() );
 		printText2D(text, 550, 35, 30); // Bottom
 
+		sprintf(text1,"Life:", glfwGetTime() );
+		printText2D(text1, 550, 540, 25); // Top
 
-		char textLife[256];
-		sprintf(textLife,"%d", p2Life());
-		printText2D(textLife, 700, 35, 30); // Bottom Life Total  X, Y, Size
+		if (playerturn == true) { 
+		
+		sprintf(textLife,"%d",p2Life() );
+		printText2D(textLife, 700, 35, 30); // bottom Life Total
+
+
+			sprintf(textLife1,"%d",p1Life() );
+		printText2D(textLife1, 700, 540, 25); // Top Life Total
+
+		}
+
+		else {
+
+				
+		sprintf(textLife,"%d",p2Life() );
+		printText2D(textLife, 700, 540, 25); // Top Life Total
+
+		sprintf(textLife1,"%d", p1Life());
+		printText2D(textLife1, 700, 35, 30); // Bottom Life Total  X, Y, Size
+
+
+		}
+		
+
+
+
+		
+		
 
 
 
 		if (!glfwGetKey( window, GLFW_KEY_5 ) == GLFW_RELEASE) {
 
 
-			p1LifeLoss();
+			p1Loss(1);
 			Sleep(150);
 
 		}
@@ -693,7 +727,7 @@ int main( void )
 		if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
 
 
-			p2LifeLoss();
+			p2Loss(1);
 			Sleep(150);
 
 		}

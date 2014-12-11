@@ -78,45 +78,32 @@ void p1Zero() {
 	moves = 0;
 }
 
-void p2LifeSet(int life1) {
 
- player2 = life1; 
+void p2Loss(int loss2) {
 
- 
+	player2 = player2 - loss2;
 
 }
 
-int p2LifeLoss() {
+void p2LifeSet(int set2) {
 
+	player2 = set2;
 
-
-	player2 = player2 - 1;
-	return player2;
 }
-
-int p2LifeLoss(int loss3) {
-
-
-	player2 = player2 - loss3;
-
-	return player2;
-}
-
-void p2LifeCust(int loss1) {
-
-
-	player2 = player2 - loss1;
-
-	
-}
-
 
 int p2Life() {
 
-
-	
 	return player2;
+
 }
+
+
+
+
+
+
+
+
 
 void player1Inputs(){
 
@@ -227,7 +214,7 @@ void p1card1attack(){
 		//P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
-			p2LifeCust(2);			//Lose 2 Life, can be more.
+			p2Loss(2);			//Lose 2 Life, can be more.
 			die4 = false;
 			myDistance4=60;
 			 p1card1selectedanimation = false;
@@ -329,7 +316,7 @@ void p1card2attack(){
 		//P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
-			p2LifeCust(2);			//Lose two life, can be more
+			p2Loss(2);				//Lose two life, can be more
 			die4 = false;
 			myDistance4=60;
 			 p1card2selectedanimation = false;
@@ -430,7 +417,7 @@ void p1card3attack(){
 		//P2CARD2 = P2CARD2 * dieAnimation;			// Life Subtraction
 		myDistance4--;
 		if(myDistance4 <= 0){
-			p2LifeCust(2);			//Life Subtraction
+			p2Loss(2);				//Life Subtraction
 			die4 = false;
 			myDistance4=60;
 			 p1card3selectedanimation = false;
