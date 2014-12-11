@@ -96,13 +96,31 @@ glm::mat4 Player1Matrix = glm::mat4(1.0);
 
 glm::mat4 Player2Matrix = glm::mat4(1.0);
 
-glm::mat4 P2CARD3m = glm::mat4(1.0);
+glm::mat4 P2CARD3m = glm::mat4(1.0); 
 glm::mat4 P2CARD2m = glm::mat4(1.0);
 glm::mat4 P2CARD1m = glm::mat4(1.0);
 
 glm::mat4 P1CARD3m = glm::mat4(1.0);
 glm::mat4 P1CARD2m = glm::mat4(1.0);
 glm::mat4 P1CARD1m = glm::mat4(1.0);
+
+//cardMetaData
+bool p1card3dead = false; //Uses Tex 4
+bool p1card2dead = false; //Uses Tex7
+bool p1card1dead = false; //Tex5
+
+bool p2card3dead = false; //Tex2
+bool p2card2dead = false; //Tex6
+bool p2card1dead = false; //Tex3
+
+//cardMetaData
+bool p1card3rev = false; //Uses Tex 4
+bool p1card2rev = false; //Uses Tex7
+bool p1card1rev = false; //Tex5
+
+bool p2card3rev = false; //Tex2
+bool p2card2rev = false; //Tex6
+bool p2card1rev = false; //Tex3
 
 glm::mat4 MVP1;//board
 
@@ -132,25 +150,25 @@ glm::mat4 setUpPlayer(glm::mat4 MODEL, glm::mat4 MVP, glm::vec3 TRANS, glm::mat4
 
 
 void drawText(const char *text, int length, int x, int y){
- glMatrixMode(GL_PROJECTION); // change the current matrix to PROJECTION
- double matrix[16]; // 16 doubles in stack memory
- glGetDoublev(GL_PROJECTION_MATRIX, matrix); // get the values from PROJECTION matrix to local variable
- glLoadIdentity(); // reset PROJECTION matrix to identity matrix
- glOrtho(0, 800, 0, 600, -5, 5); // orthographic perspective
- glMatrixMode(GL_MODELVIEW); // change current matrix to MODELVIEW matrix again
- glLoadIdentity(); // reset it to identity matrix
- glPushMatrix(); // push current state of MODELVIEW matrix to stack
- glLoadIdentity(); // reset it again. (may not be required, but it my convention)
- glRasterPos2i(x, y); // raster position in 2D
- for(int i=0; i<length; i++){
-  glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)text[i]); // generation of characters in our text with 9 by 15 GLU font
- }
- glPopMatrix(); // get MODELVIEW matrix value from stack
- glMatrixMode(GL_PROJECTION); // change current matrix mode to PROJECTION
- glLoadMatrixd(matrix); // reset
- glMatrixMode(GL_MODELVIEW); // change current matrix mode to MODELVIEW
+	glMatrixMode(GL_PROJECTION); // change the current matrix to PROJECTION
+	double matrix[16]; // 16 doubles in stack memory
+	glGetDoublev(GL_PROJECTION_MATRIX, matrix); // get the values from PROJECTION matrix to local variable
+	glLoadIdentity(); // reset PROJECTION matrix to identity matrix
+	glOrtho(0, 800, 0, 600, -5, 5); // orthographic perspective
+	glMatrixMode(GL_MODELVIEW); // change current matrix to MODELVIEW matrix again
+	glLoadIdentity(); // reset it to identity matrix
+	glPushMatrix(); // push current state of MODELVIEW matrix to stack
+	glLoadIdentity(); // reset it again. (may not be required, but it my convention)
+	glRasterPos2i(x, y); // raster position in 2D
+	for(int i=0; i<length; i++){
+		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)text[i]); // generation of characters in our text with 9 by 15 GLU font
+	}
+	glPopMatrix(); // get MODELVIEW matrix value from stack
+	glMatrixMode(GL_PROJECTION); // change current matrix mode to PROJECTION
+	glLoadMatrixd(matrix); // reset
+	glMatrixMode(GL_MODELVIEW); // change current matrix mode to MODELVIEW
 }
- 
+
 
 
 
@@ -195,7 +213,7 @@ void drawPlayer(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glDrawElements(GL_TRIANGLES, indices3.size(), GL_UNSIGNED_SHORT, (void*)0);
 }
 
-	
+
 
 
 
@@ -207,10 +225,10 @@ int main( void )
 		fprintf( stderr, "Failed to initialize GLFW\n" );
 		return -1;
 	}
-	
 
-	
-	
+
+
+
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -253,13 +271,18 @@ int main( void )
 
 	Texture = loadDDS("tex/cardbg2.DDS");
 	Texture2 = loadDDS("tex/ecat.DDS");
-	Texture3 = loadDDS("tex/gauto.DDS");
-	Texture4 = loadDDS("tex/dfsen.DDS");
+	Texture3 = loadDDS("tex/kvan.DDS");
+	Texture4 = loadDDS("tex/dsen.DDS");
 	Texture5 = loadDDS("tex/aceace.DDS");
 	Texture6 = loadDDS("tex/ipilot.DDS");
 	Texture7 = loadDDS("tex/mass.DDS");
 	Texture8 = loadDDS("tex/hansolo.DDS");
 	Texture9 = loadDDS("tex/lando.DDS");
+
+	int randomCard = rand() % 6;
+
+	GLuint cardArray[6] = {Texture2, Texture3, Texture4, Texture5, Texture6, Texture7};
+	int cardArrayPosition = 0;
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -382,7 +405,7 @@ int main( void )
 	glm::mat4 temp = setUpCard(P2CARD3m, MVP2, glm::vec3(-7.0f, 0.1f, -4.3f), cardSize, rotation);
 	setP2Card3(temp);
 	setP2_Card3(temp);
-	
+
 	temp = setUpCard(P2CARD2m, MVP6, glm::vec3(-0.0f, 0.1f, -3.3f), cardSize, rotation);
 	setP2Card2(temp);
 	setP2_Card2(temp);
@@ -408,7 +431,7 @@ int main( void )
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
 	createCopys_();
-	
+
 	bool playerturn = false;
 
 	do{
@@ -433,7 +456,7 @@ int main( void )
 				glm::vec3(0,1,0)  
 				);
 			playerturn =false;
-			
+
 
 
 		}
@@ -454,32 +477,32 @@ int main( void )
 
 		//Used for changing player perspective
 
-	
-		
+
+
 
 		if(!playerturn)
 		{
-		player1Inputs();
+			player1Inputs();
 
-		P1CARD1m = getP1Card1();
-		P1CARD2m = getP1Card2();
-		P1CARD3m = getP1Card3();
+			P1CARD1m = getP1Card1();
+			P1CARD2m = getP1Card2();
+			P1CARD3m = getP1Card3();
 
-		P2CARD1m = getP2Card1();
-		P2CARD2m = getP2Card2();
-		P2CARD3m = getP2Card3();
-		
+			P2CARD1m = getP2Card1();
+			P2CARD2m = getP2Card2();
+			P2CARD3m = getP2Card3();
+
 		}
 		else{
 			player2Inputs();
-		P1CARD1m = getP1_Card1();
-		P1CARD2m = getP1_Card2();
-		P1CARD3m = getP1_Card3();
+			P1CARD1m = getP1_Card1();
+			P1CARD2m = getP1_Card2();
+			P1CARD3m = getP1_Card3();
 
-		P2CARD1m = getP2_Card1();
-		P2CARD2m = getP2_Card2();
-		P2CARD3m = getP2_Card3();
-		
+			P2CARD1m = getP2_Card1();
+			P2CARD2m = getP2_Card2();
+			P2CARD3m = getP2_Card3();
+
 		}
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
@@ -559,12 +582,66 @@ int main( void )
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 
-		drawCard(P2CARD3m,MVP2,Texture2);
-		drawCard(P2CARD1m,MVP3,Texture3);
-		drawCard(P1CARD3m,MVP4,Texture4);
-		drawCard(P1CARD1m,MVP5,Texture5);
-		drawCard(P2CARD2m,MVP6,Texture6);
-		drawCard(P1CARD2m,MVP7,Texture7);
+		if(!p2card3dead){
+			drawCard(P2CARD3m,MVP2,Texture2);
+		}
+		else if(p2card3rev){
+			randomCard = rand() % 6;
+
+			Texture2 = cardArray[randomCard];
+			p2card3dead = false;
+			p2card3rev = false;
+		}
+		if(!p2card1dead){
+			drawCard(P2CARD1m,MVP3,Texture3);
+		}
+		else if(p2card1rev){
+			randomCard = rand() % 6;
+
+			Texture3 = cardArray[randomCard];
+			p2card1dead = false;
+			p2card1rev = false;
+		}
+		if(!p1card3dead){
+			drawCard(P1CARD3m,MVP4,Texture4);
+		}
+		else if(p1card3rev){
+			randomCard = rand() % 6;
+
+			Texture4 = cardArray[randomCard];
+			p1card3dead = false;
+			p1card3rev = false;
+		}
+		if(!p1card1dead){
+			drawCard(P1CARD1m,MVP5,Texture5);
+		}
+		else if(p1card1rev){
+			randomCard = rand() % 6;
+
+			Texture5 = cardArray[randomCard];
+			p1card1dead = false;
+			p1card1rev = false;
+		}
+		if(!p2card2dead){
+			drawCard(P2CARD2m,MVP6,Texture6);
+		}
+		else if(p2card2rev){
+			randomCard = rand() % 6;
+
+			Texture6 = cardArray[randomCard];
+			p2card2dead = false;
+			p2card2rev = false;
+		}
+		if(!p1card2dead){
+			drawCard(P1CARD2m,MVP7,Texture7);
+		}
+		else if(p1card2rev){
+			randomCard = rand() % 6;
+
+			Texture7 = cardArray[randomCard];
+			p1card2dead = false;
+			p1card2rev = false;
+		}
 
 		glUseProgram(programID);
 
@@ -582,43 +659,43 @@ int main( void )
 
 		glDisable(GL_BLEND);
 
-		
+
 		char text1[256];
 		sprintf(text1,"Life:", glfwGetTime() );
 		printText2D(text1, 550, 540, 25); // Top
 
-		
+
 
 
 		char textLife1[256];
 		sprintf(textLife1,"%d", p1Life());
 		printText2D(textLife1, 700, 540, 25); // Top Life Total
 
-			char text[256];
+		char text[256];
 		sprintf(text,"Life:", glfwGetTime() );
 		printText2D(text, 550, 35, 30); // Bottom
-	
 
-			char textLife[256];
+
+		char textLife[256];
 		sprintf(textLife,"%d", p2Life());
 		printText2D(textLife, 700, 35, 30); // Bottom Life Total  X, Y, Size
 
 
 
 		if (!glfwGetKey( window, GLFW_KEY_5 ) == GLFW_RELEASE) {
-		
-			
-		p1LifeLoss();
-		Sleep(150);
-		
+
+
+			p1LifeLoss();
+			Sleep(150);
+
 		}
 
-			if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
-		
-			
-		p2LifeLoss();
-		Sleep(150);
-		
+		if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
+
+
+			p2LifeLoss();
+			Sleep(150);
+
 		}
 
 		// Swap buffers
