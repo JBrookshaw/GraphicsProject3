@@ -426,7 +426,7 @@ int main( void )
 	setP1Card1(temp);
 	setP1_Card1(temp);
 
-	initText2D( "tex/Holstein.DDS" );
+	initText2D( "tex/font.DDS" );
 
 	int test2 = p2Life();
 		int test1 = p2Life();
@@ -683,7 +683,7 @@ int main( void )
 		printText2D(text, 550, 35, 30); // Bottom
 
 		sprintf(text1,"Life:", glfwGetTime() );
-		printText2D(text1, 550, 540, 25); // Top
+		printText2D(text1, 550, 540, 30); // Top
 
 		if (playerturn == true) { 
 		
@@ -692,7 +692,7 @@ int main( void )
 
 
 			sprintf(textLife1,"%d",p1Life() );
-		printText2D(textLife1, 700, 540, 25); // Top Life Total
+		printText2D(textLife1, 700, 540, 30); // Top Life Total
 
 		}
 
