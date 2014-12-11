@@ -32,7 +32,6 @@ GLuint Texture3;
 GLuint Texture4;
 GLuint Texture5;
 GLuint Texture6;
-GLuint Texture7;
 
 GLuint VertexArrayID;
 
@@ -202,7 +201,6 @@ int main( void )
 	Texture4 = loadDDS("tex/dfsen.DDS");
 	Texture5 = loadDDS("tex/aceace.DDS");
 	Texture6 = loadDDS("tex/ipilot.DDS");
-	Texture7 = loadDDS("tex/mass.DDS");
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -326,7 +324,9 @@ int main( void )
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
 	createCopys_();
-
+	int player1 = 40;
+	int player2 = 40;
+	int moves = 0;
 	bool playerturn =false;
 
 	do{
@@ -360,6 +360,8 @@ int main( void )
 		playerturn =true;
 	}
 
+
+
 		if(!playerturn)
 		{
 		player1Inputs();
@@ -371,6 +373,13 @@ int main( void )
 		P2CARD1m = getP2Card1();
 		P2CARD2m = getP2Card2();
 		P2CARD3m = getP2Card3();
+		moves = moves+1;
+		if (moves > 20) {
+
+			playerturn = true;
+			moves = 0; 
+
+		}
 		}
 		else{
 			player2Inputs();
@@ -381,6 +390,13 @@ int main( void )
 		P2CARD1m = getP2_Card1();
 		P2CARD2m = getP2_Card2();
 		P2CARD3m = getP2_Card3();
+		 moves = moves + 1;
+		if (moves > 20) {
+
+			playerturn = false;
+			moves = 0; 
+
+		}
 		}
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
@@ -454,8 +470,8 @@ int main( void )
 		drawCard(P2CARD1m,MVP3,Texture3);
 		drawCard(P1CARD3m,MVP4,Texture4);
 		drawCard(P1CARD1m,MVP5,Texture5);
-		drawCard(P2CARD2m,MVP6,Texture6);
-		drawCard(P1CARD2m,MVP7,Texture7);
+		drawCard(P2CARD2m,MVP6,Texture5);
+		drawCard(P1CARD2m,MVP7,Texture4);
 
 		////// End of rendering of the second object //////
 
@@ -463,9 +479,41 @@ int main( void )
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 
+		
+		char text1[256];
+		sprintf(text1,"Life:", glfwGetTime() );
+		printText2D(text1, 620, 520, 25); // Top
+
+		char textLife1[256];
+		sprintf(textLife1,"%d", player1 );
+		printText2D(textLife1, 750, 520, 25); // Top Life Total
+
+
 		char text[256];
-		sprintf(text,"Test", glfwGetTime() );
-		printText2D(text, 10, 500, 60);
+		sprintf(text,"Life:", glfwGetTime() );
+		printText2D(text, 620, 80, 25); // Bottom
+
+			char textLife[256];
+		sprintf(textLife,"%d", player2);
+		printText2D(textLife, 750, 80, 25); // Bottom Life Total  X, Y, Size
+
+
+
+		if (!glfwGetKey( window, GLFW_KEY_5 ) == GLFW_RELEASE) {
+		
+			
+		player1 = player1-1;
+		Sleep(150);
+		
+		}
+
+			if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
+		
+			
+		player2 = player2-1;
+		Sleep(150);
+		
+		}
 
 		// Swap buffers
 		glfwSwapBuffers(window);
