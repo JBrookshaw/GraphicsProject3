@@ -34,6 +34,7 @@ GLuint Texture5;
 GLuint Texture6;
 GLuint Texture7;
 GLuint Texture8;
+GLuint Texture9;
 
 GLuint VertexArrayID;
 
@@ -93,6 +94,8 @@ glm::mat4 ModelMatrix1 = glm::mat4(1.0);
 
 glm::mat4 Player1Matrix = glm::mat4(1.0);
 
+glm::mat4 Player2Matrix = glm::mat4(1.0);
+
 glm::mat4 P2CARD3m = glm::mat4(1.0);
 glm::mat4 P2CARD2m = glm::mat4(1.0);
 glm::mat4 P2CARD1m = glm::mat4(1.0);
@@ -102,13 +105,16 @@ glm::mat4 P1CARD2m = glm::mat4(1.0);
 glm::mat4 P1CARD1m = glm::mat4(1.0);
 
 glm::mat4 MVP1;//board
+
 glm::mat4 MVP2;//card
 glm::mat4 MVP3;//card
 glm::mat4 MVP4;//card
 glm::mat4 MVP5;//card
 glm::mat4 MVP6;//card
 glm::mat4 MVP7;//card
+
 glm::mat4 MVP8;//player 1
+glm::mat4 MVP9;//player 1
 
 glm::mat4 setUpCard(glm::mat4 MODEL, glm::mat4 MVP, glm::vec3 TRANS, glm::mat4 SCALE, glm::mat4 ROTA){
 	MODEL = glm::translate(MODEL, TRANS);
@@ -253,6 +259,7 @@ int main( void )
 	Texture6 = loadDDS("tex/ipilot.DDS");
 	Texture7 = loadDDS("tex/mass.DDS");
 	Texture8 = loadDDS("tex/hansolo.DDS");
+	Texture9 = loadDDS("tex/lando.DDS");
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -323,8 +330,6 @@ int main( void )
 	glUseProgram(programID);
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
-	
-
 
 
 
@@ -332,9 +337,9 @@ int main( void )
 	double lastTime = glfwGetTime();
 	int nbFrames = 0;
 
-	glm::mat4 myScalingMatrix = glm::scale(2.3f, 1.0f , 3.5f);
-	glm::mat4 cardSize = glm::scale(0.8f, 1.0f ,0.8f);
-	glm::mat4 playerSize = glm::scale(2.0f, 1.0f ,2.0f);
+	glm::mat4 myScalingMatrix = glm::scale(3.2f, 1.0f , 4.8f);
+	glm::mat4 cardSize = glm::scale(1.5f, 1.0f ,.85f);
+	glm::mat4 playerSize = glm::scale(2.75f, 1.0f ,2.75f);
 	glm::mat4 myScalingMatrix3 = glm::scale(0.95f, 1.0f ,0.95f);
 
 	glm::mat4 myMatrix = glm::translate(0.0f, 0.0f, -0.05f);
@@ -363,7 +368,7 @@ int main( void )
 	// Camera matrix
 
 	ViewMatrix       = glm::lookAt(
-		glm::vec3(0,17,0.001f), // Camera is at (4,3,-3), in World Space
+		glm::vec3(0,23,0.001f), // Camera is at (4,3,-3), in World Space
 		glm::vec3(0,0,0), // and looks at the origin
 		glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
 		);
@@ -371,9 +376,10 @@ int main( void )
 	ModelMatrix1 = ModelMatrix1 * myScalingMatrix;
 	MVP1 = ProjectionMatrix * ViewMatrix * ModelMatrix1;
 
-	Player1Matrix = setUpPlayer(Player1Matrix, MVP8, glm::vec3(0.0f, 1.0f, 3.3f), playerSize, norotaion);
+	Player1Matrix = setUpPlayer(Player1Matrix, MVP8, glm::vec3(0.0f, 0.2f, 8.7f), playerSize, norotaion);
+	Player2Matrix = setUpPlayer(Player2Matrix, MVP9, glm::vec3(0.0f, 0.2f, -8.7f), playerSize, rotation);
 
-	glm::mat4 temp = setUpCard(P2CARD3m, MVP2, glm::vec3(-4.0f, 0.1f, -3.3f), cardSize, rotation);
+	glm::mat4 temp = setUpCard(P2CARD3m, MVP2, glm::vec3(-7.0f, 0.1f, -4.3f), cardSize, rotation);
 	setP2Card3(temp);
 	setP2_Card3(temp);
 	
@@ -381,11 +387,11 @@ int main( void )
 	setP2Card2(temp);
 	setP2_Card2(temp);
 
-	temp = setUpCard(P2CARD1m, MVP3, glm::vec3(4.0f, 0.1f, -3.3f), cardSize, rotation);
+	temp = setUpCard(P2CARD1m, MVP3, glm::vec3(7.0f, 0.1f, -4.3f), cardSize, rotation);
 	setP2Card1(temp);
 	setP2_Card1(temp);
 
-	temp = setUpCard(P1CARD3m, MVP4, glm::vec3(4.0f, 0.1f, 3.3f), cardSize, norotaion);
+	temp = setUpCard(P1CARD3m, MVP4, glm::vec3(7.0f, 0.1f, 4.3f), cardSize, norotaion);
 	setP1Card3(temp);
 	setP1_Card3(temp);
 
@@ -393,7 +399,7 @@ int main( void )
 	setP1Card2(temp);
 	setP1_Card2(temp);
 
-	temp = setUpCard(P1CARD1m, MVP5, glm::vec3(-4.0f, 0.1f, 3.3f), cardSize, norotaion);
+	temp = setUpCard(P1CARD1m, MVP5, glm::vec3(-7.0f, 0.1f, 4.3f), cardSize, norotaion);
 	setP1Card1(temp);
 	setP1_Card1(temp);
 
@@ -421,7 +427,7 @@ int main( void )
 		//Used for changing player perspective
 		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
 		ViewMatrix       = glm::lookAt(
-		glm::vec3(0,17,0.001f), 
+		glm::vec3(0,23,0.001f), 
 		glm::vec3(0,0,0), 
 		glm::vec3(0,1,0)  
 		);
@@ -430,7 +436,7 @@ int main( void )
 
 		if (glfwGetKey( window, GLFW_KEY_9 ) == GLFW_PRESS){
 		ViewMatrix       = glm::lookAt(
-		glm::vec3(0,17,0.001f), 
+		glm::vec3(0,23,0.001f), 
 		glm::vec3(0,0,0), 
 		glm::vec3(0,-1,0)  
 		);
@@ -471,11 +477,15 @@ int main( void )
 		MVP7 = ProjectionMatrix * ViewMatrix * P1CARD2m;
 
 		MVP8 = ProjectionMatrix * ViewMatrix * Player1Matrix;
+		MVP9 = ProjectionMatrix * ViewMatrix * Player2Matrix;
 
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(programID);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
 		glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]); // This one doesn't change between objects, so this can be done once for all objects that use "programID"
 
@@ -551,31 +561,32 @@ int main( void )
 		glDisableVertexAttribArray(2);
 
 		drawPlayer(Player1Matrix, MVP8, Texture8);
+		drawPlayer(Player2Matrix, MVP9, Texture9);
 
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 
-		
+		glDisable(GL_BLEND);
 
 		
 		char text1[256];
 		sprintf(text1,"Life:", glfwGetTime() );
-		printText2D(text1, 620, 520, 25); // Top
+		printText2D(text1, 620, 570, 25); // Top
 
 		char textLife1[256];
 		sprintf(textLife1,"%d", p1Life());
-		printText2D(textLife1, 750, 520, 25); // Top Life Total
+		printText2D(textLife1, 750, 570, 25); // Top Life Total
 
 
 		char text[256];
 		sprintf(text,"Life:", glfwGetTime() );
-		printText2D(text, 620, 80, 25); // Bottom
+		printText2D(text, 620, 30, 30); // Bottom
 
 			char textLife[256];
 		sprintf(textLife,"%d", p2Life());
-		printText2D(textLife, 750, 80, 25); // Bottom Life Total  X, Y, Size
+		printText2D(textLife, 750, 30, 30); // Bottom Life Total  X, Y, Size
 
 
 
