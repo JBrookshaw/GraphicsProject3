@@ -83,7 +83,7 @@ void setP1Card1Dead(){
 }
 
 //false = player1 | true = player2
-int player1 = 40;
+int player1 = 20;
 int moves1 = 0;
 bool turn2 = false;
 bool p2attacking = false;
@@ -104,47 +104,23 @@ void p2Zero() {
 	moves1 = 0;
 }
 
-int p1LifeLoss() {
+void p1Loss(int loss1) {
 
-
-	player1 = player1 - 1;
-
-	return player1;
-}
-
-int p1LifeLoss(int loss) {
-
-
-	player1 = player1 - loss;
-
-	return player1;
-}
-
-void p1LifeCust(int loss2) {
-
-
-	player1 = player1 - loss2;
-
-	
-}
-
-void p1LifeSet(int life) {
-
- player1 = life; 
-
- 
+	player1 = player1 - loss1;
 
 }
 
+void p1LifeSet(int set1) {
+
+	player1 = set1;
+
+}
 
 int p1Life() {
 
-
-	
-
 	return player1;
-}
 
+}
 
 
 void player2Inputs(){
@@ -255,7 +231,7 @@ void p2card1attack(){
 		//P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
-			p1LifeCust(2);		// Life Subtraction
+			p1Loss(2);		// Life Subtraction
 			die_4 = false;
 			my_Distance4=60;
 			 p2card1selectedanimation = false;
@@ -356,7 +332,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 		//P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
-			p1LifeCust(2);		// Life Subtraction
+			p1Loss(2);		// Life Subtraction
 			die_4 = false;
 			my_Distance4=60;
 			 p2card2selectedanimation = false;
@@ -454,7 +430,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 		//P1_CARD1 = P1_CARD1 * die_Animation; // Changed to life subtraction
 		my_Distance4--;
 		if(my_Distance4 <= 0){
-			p1LifeCust(2);		// Life Subtraction
+			p1Loss(2);		// Life Subtraction
 			die_4 = false;
 			my_Distance4=60;
 			 p2card3selectedanimation = false;

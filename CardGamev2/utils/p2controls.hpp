@@ -8,9 +8,9 @@ void p2card1attack();
 void p2card2attack();
 void p2card3attack();
 
+void p1Loss(int loss1);
+void p1LifeSet(int set1);
 int p1Life();
-int p1LifeLoss();
-void p1LifeSet(int life);
 
 int p2Moves();
 void p2Zero();
