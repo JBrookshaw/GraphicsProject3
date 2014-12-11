@@ -95,6 +95,14 @@ void p1LifeCust(int loss) {
 	
 }
 
+void p1LifeSet(int life) {
+
+ player1 = life; 
+
+ 
+
+}
+
 
 int p1Life() {
 

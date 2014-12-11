@@ -155,6 +155,11 @@ void drawText(const char *text, int length, int x, int y){
 
 
 
+
+
+
+
+
 void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
@@ -211,6 +216,11 @@ int main( void )
 
 	
 	
+
+
+
+
+
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -434,7 +444,14 @@ int main( void )
 				);
 			playerturn =false;
 			
+			int life1 = p1Life();
+			int life2 = p2Life();
 
+			p1LifeSet(life2);
+			p2LifeSet(life1);
+			
+
+			
 
 		}
 
@@ -448,6 +465,12 @@ int main( void )
 				glm::vec3(0,-1,0)  
 				);
 			playerturn = true;
+			int life1 = p1Life();
+			int life2 = p2Life();
+
+			p1LifeSet(life2);
+			p2LifeSet(life1);
+			
 
 
 		}
@@ -585,14 +608,14 @@ int main( void )
 		
 		char text1[256];
 		sprintf(text1,"Life:", glfwGetTime() );
-		printText2D(text1, 550, 540, 25); // Top
+		printText2D(text1, 550, 540, 30); // Top
 
 		
 
 
 		char textLife1[256];
 		sprintf(textLife1,"%d", p1Life());
-		printText2D(textLife1, 700, 540, 25); // Top Life Total
+		printText2D(textLife1, 700, 540, 30); // Top Life Total
 
 			char text[256];
 		sprintf(text,"Life:", glfwGetTime() );
@@ -602,6 +625,11 @@ int main( void )
 			char textLife[256];
 		sprintf(textLife,"%d", p2Life());
 		printText2D(textLife, 700, 35, 30); // Bottom Life Total  X, Y, Size
+
+
+		char textLife5[256];
+		sprintf(textLife5,"4/5", p2Life());
+		printText2D(textLife5, 600, 255, 20); // Bottom Life Total  X, Y, Size
 
 
 

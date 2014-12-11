@@ -78,7 +78,16 @@ void p1Zero() {
 	moves = 0;
 }
 
+void p2LifeSet(int life1) {
+
+ player2 = life1; 
+
+ 
+
+}
+
 int p2LifeLoss() {
+
 
 
 	player2 = player2 - 1;
