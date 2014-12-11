@@ -49,6 +49,39 @@ mat4 rotation_2 = mat4(
 
 mat4 die_Animation = my_ScalingMatrix3*rotation_2;
 
+
+bool p1card3dead1 = false; //Tex2
+bool p1card2dead1 = false; //Tex6
+bool p1card1dead1 = false; //Tex3
+
+
+void resetDeadFlags2(){
+p1card3dead1 = false; //Tex1
+p1card2dead1 = false; //Tex6
+p1card1dead1 = false; //Tex3
+
+}
+
+bool getP1Card3Dead(){
+	return p1card3dead1;
+}
+bool getP1Card2Dead(){
+	return p1card2dead1;
+}
+bool getP1Card1Dead(){
+	return p1card1dead1;
+}
+
+void setP1Card3Dead(){
+	p1card3dead1 = false;
+}
+void setP1Card2Dead(){
+	p1card2dead1 = false;
+}
+void setP1Card1Dead(){
+	p1card1dead1 = false;
+}
+
 //false = player1 | true = player2
 int player1 = 40;
 int moves1 = 0;
@@ -150,7 +183,7 @@ void p2card1attack(){
 		P1_CARD3 = P1_CARD3 * die_Animation;
 		my_Distance--;
 		if(my_Distance <= 0){
-			P1_CARD3 = P1_CARD3Copy;
+			p1card3dead1 = true;//P1_CARD3 = P1_CARD3Copy;
 			die_ = false;
 			my_Distance=60;
 			p2card1selectedanimation = false;
@@ -173,7 +206,7 @@ void p2card1attack(){
 		P1_CARD1 = P1_CARD1 * die_Animation;
 		my_Distance2--;
 		if(my_Distance2 <= 0){
-			P1_CARD1 = P1_CARD1Copy;
+			p1card1dead1 = true;//P1_CARD1 = P1_CARD1Copy;
 			die_2 = false;
 			my_Distance2=60;
 			 p2card1selectedanimation = false;
@@ -198,7 +231,7 @@ void p2card1attack(){
 		P1_CARD2 = P1_CARD2 * die_Animation;
 		my_Distance3--;
 		if(my_Distance3 <= 0){
-			P1_CARD2 = P1_CARD2Copy;
+			p1card2dead1 = true;//P1_CARD2 = P1_CARD2Copy;
 			die_3 = false;
 			my_Distance3=60;
 			 p2card1selectedanimation = false;
@@ -251,7 +284,7 @@ void p2card2attack(){
 		P1_CARD2 = P1_CARD2 * die_Animation;
 		my_Distance--;
 		if(my_Distance <= 0){
-			P1_CARD2 = P1_CARD2Copy;
+			p1card2dead1 = true;//P1_CARD2 = P1_CARD2Copy;
 			die_ = false;
 			my_Distance=60;
 			p2card2selectedanimation = false;
@@ -274,7 +307,7 @@ void p2card2attack(){
 		P1_CARD1 = P1_CARD1 * die_Animation;
 		my_Distance2--;
 		if(my_Distance2 <= 0){
-			P1_CARD1 = P1_CARD1Copy;
+			p1card1dead1 = true;//P1_CARD1 = P1_CARD1Copy;
 			die_2 = false;
 			my_Distance2=60;
 			 p2card2selectedanimation = false;
@@ -299,7 +332,7 @@ void p2card2attack(){
 		P1_CARD3 = P1_CARD3 * die_Animation;
 		my_Distance3--;
 		if(my_Distance3 <= 0){
-			P1_CARD3 = P1_CARD3Copy;
+			p1card3dead1 = true;//P1_CARD3 = P1_CARD3Copy;
 			die_3 = false;
 			my_Distance3=60;
 			p2card2selectedanimation = false;
@@ -351,7 +384,7 @@ void p2card3attack(){
 		P1_CARD1 = P1_CARD1 * die_Animation;
 		my_Distance--;
 		if(my_Distance <= 0){
-			P1_CARD1 = P1_CARD1Copy;
+			p1card1dead1 = true;//P1_CARD1 = P1_CARD1Copy;
 			die_ = false;
 			my_Distance=60;
 			 p2card3selectedanimation = false;
@@ -374,7 +407,7 @@ void p2card3attack(){
 		P1_CARD3 = P1_CARD3 * die_Animation;
 		my_Distance2--;
 		if(my_Distance2 <= 0){
-			P1_CARD3 = P1_CARD3Copy;
+			p1card3dead1 = true;//P1_CARD3 = P1_CARD3Copy;
 			die_2 = false;
 			my_Distance2=60;
 			 p2card3selectedanimation = false;
@@ -398,7 +431,7 @@ void p2card3attack(){
 		P1_CARD2 = P1_CARD2 * die_Animation;
 		my_Distance3--;
 		if(my_Distance3 <= 0){
-			P1_CARD2 = P1_CARD2Copy;
+			p1card2dead1 = true;//P1_CARD2 = P1_CARD2Copy;
 			die_3 = false;
 			my_Distance3=60;
 			 p2card3selectedanimation = false;

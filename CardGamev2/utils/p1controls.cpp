@@ -10,8 +10,6 @@ using namespace glm;
 
 #include "p1controls.hpp"
 
-
-
 glm::mat4 P1CARD1;
 glm::mat4 P1CARD2;
 glm::mat4 P1CARD3;
@@ -68,6 +66,14 @@ bool p1card1selected = false, p1card2selected = false, p1card3selected  = false;
 bool p1card1selectedanimation = false, p1card2selectedanimation = false, p1card3selectedanimation  = false;
 
 
+
+bool p2card3dead1 = false; //Tex2
+bool p2card2dead1 = false; //Tex6
+bool p2card1dead1 = false; //Tex3
+
+
+
+
 int p1Moves() {
 
 	return moves;
@@ -84,6 +90,33 @@ void p2LifeSet(int life1) {
 
  
 
+}
+
+void resetDeadFlags(){
+p2card3dead1 = false; //Tex2
+p2card2dead1 = false; //Tex6
+p2card1dead1 = false; //Tex3
+
+}
+
+bool getP2Card3Dead(){
+	return p2card3dead1;
+}
+bool getP2Card2Dead(){
+	return p2card2dead1;
+}
+bool getP2Card1Dead(){
+	return p2card1dead1;
+}
+
+void setP2Card3Dead(){
+	p2card3dead1 = false;
+}
+void setP2Card2Dead(){
+	p2card2dead1 = false;
+}
+void setP2Card1Dead(){
+	p2card1dead1 = false;
 }
 
 int p2LifeLoss() {
@@ -154,7 +187,8 @@ void p1card1attack(){
 		P2CARD3 = P2CARD3 * dieAnimation;
 		myDistance--;
 		if(myDistance <= 0){
-			P2CARD3 = P2CARD3Copy;
+			//P2CARD3 = P2CARD3Copy;
+			p2card3dead1 = true;
 			die = false;
 			myDistance=60;
 			p1card1selectedanimation = false;
@@ -177,7 +211,7 @@ void p1card1attack(){
 		P2CARD1 = P2CARD1 * dieAnimation;
 		myDistance2--;
 		if(myDistance2 <= 0){
-			P2CARD1 = P2CARD1Copy;
+			p2card1dead1 = true;//P2CARD1 = P2CARD1Copy;
 			die2 = false;
 			myDistance2=60;
 			 p1card1selectedanimation = false;
@@ -202,7 +236,7 @@ void p1card1attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;
 		myDistance3--;
 		if(myDistance3 <= 0){
-			P2CARD2 = P2CARD2Copy;
+			p2card2dead1 = true;//P2CARD2 = P2CARD2Copy;
 			die3 = false;
 			myDistance3=60;
 			 p1card1selectedanimation = false;
@@ -256,7 +290,7 @@ void p1card2attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;
 		myDistance--;
 		if(myDistance <= 0){
-			P2CARD2 = P2CARD2Copy;
+			p2card2dead1 = true;//P2CARD2 = P2CARD2Copy;
 			die = false;
 			myDistance=60;
 			p1card2selectedanimation = false;
@@ -279,7 +313,7 @@ void p1card2attack(){
 		P2CARD1 = P2CARD1 * dieAnimation;
 		myDistance2--;
 		if(myDistance2 <= 0){
-			P2CARD1 = P2CARD1Copy;
+			p2card1dead1 = true;//P2CARD1 = P2CARD1Copy;
 			die2 = false;
 			myDistance2=60;
 			 p1card2selectedanimation = false;
@@ -304,7 +338,7 @@ void p1card2attack(){
 		P2CARD3 = P2CARD3 * dieAnimation;
 		myDistance3--;
 		if(myDistance3 <= 0){
-			P2CARD3 = P2CARD3Copy;
+			p2card3dead1 = true;//P2CARD3 = P2CARD3Copy;
 			die3 = false;
 			myDistance3=60;
 			p1card2selectedanimation = false;
@@ -358,7 +392,7 @@ void p1card3attack(){
 		P2CARD1 = P2CARD1 * dieAnimation;
 		myDistance--;
 		if(myDistance <= 0){
-			P2CARD1 = P2CARD1Copy;
+			p2card1dead1 = true;//P2CARD1 = P2CARD1Copy;
 			die = false;
 			myDistance=60;
 			 p1card3selectedanimation = false;
@@ -381,7 +415,7 @@ void p1card3attack(){
 		P2CARD3 = P2CARD3 * dieAnimation;
 		myDistance2--;
 		if(myDistance2 <= 0){
-			P2CARD3 = P2CARD3Copy;
+			p2card3dead1 = true;//P2CARD3 = P2CARD3Copy;
 			die2 = false;
 			myDistance2=60;
 			 p1card3selectedanimation = false;
@@ -406,7 +440,7 @@ void p1card3attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;
 		myDistance3--;
 		if(myDistance3 <= 0){
-			P2CARD2 = P2CARD2Copy;
+			p2card2dead1 = true;//P2CARD2 = P2CARD2Copy;
 			die3 = false;
 			myDistance3=60;
 			 p1card3selectedanimation = false;
@@ -566,6 +600,25 @@ glm::mat4 getP2Card2(){
 }
 glm::mat4 getP2Card3(){
 	return P2CARD3;
+}
+
+glm::mat4 getP1Card1C(){
+	return P1CARD1Copy;
+}
+glm::mat4 getP1Card2C(){
+	return P1CARD2Copy;
+}
+glm::mat4 getP1Card3C(){
+	return P1CARD3Copy;
+}
+glm::mat4 getP2Card1C(){
+	return P2CARD1Copy;
+}
+glm::mat4 getP2Card2C(){
+	return P2CARD2Copy;
+}
+glm::mat4 getP2Card3C(){
+	return P2CARD3Copy;
 }
 
 void  setP1Card1(glm::mat4 model){

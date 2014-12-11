@@ -432,6 +432,14 @@ int main( void )
 	createCopys();
 	createCopys_();
 
+	bool p1card3wait = false;
+	bool p1card2wait = false;
+	bool p1card1wait = false;
+
+	bool p2card3wait = false;
+	bool p2card2wait = false;
+	bool p2card1wait = false;
+
 	bool playerturn = false;
 
 	do{
@@ -457,7 +465,27 @@ int main( void )
 				);
 			playerturn =false;
 
+		
 
+			if(p1card3wait){
+				p1card3rev=true;
+			}
+			if(p1card2wait){
+				p1card2rev=true;
+			}
+			if(p1card1wait){
+				p1card1rev=true;
+			}
+
+				if(p1card3dead){
+				p1card3wait=true;
+			}
+			if(p1card2dead){
+				p1card2wait=true;
+			}
+			if(p1card1dead){
+				p1card1wait=true;
+			}
 
 		}
 
@@ -471,6 +499,28 @@ int main( void )
 				glm::vec3(0,-1,0)  
 				);
 			playerturn = true;
+
+		
+
+			if(p2card3wait){
+				p2card3rev=true;
+			}
+			if(p2card2wait){
+				p2card2rev=true;
+			}
+			if(p2card1wait){
+				p2card1rev=true;
+			}
+
+				if(p2card3dead){
+				p2card3wait=true;
+			}
+			if(p2card2dead){
+				p2card2wait=true;
+			}
+			if(p2card1dead){
+				p2card1wait=true;
+			}
 
 
 		}
@@ -492,6 +542,8 @@ int main( void )
 			P2CARD2m = getP2Card2();
 			P2CARD3m = getP2Card3();
 
+			
+
 		}
 		else{
 			player2Inputs();
@@ -503,7 +555,17 @@ int main( void )
 			P2CARD2m = getP2_Card2();
 			P2CARD3m = getP2_Card3();
 
+			
 		}
+
+			p1card3dead = getP1Card3Dead();
+			p1card2dead = getP1Card2Dead();
+			p1card1dead = getP1Card1Dead();
+
+			p2card3dead = getP2Card3Dead();
+			p2card2dead = getP2Card2Dead();
+			p2card1dead = getP2Card1Dead();
+
 		MVP2 = ProjectionMatrix * ViewMatrix * P2CARD3m;
 		MVP3 = ProjectionMatrix * ViewMatrix * P2CARD1m;
 		MVP4 = ProjectionMatrix * ViewMatrix * P1CARD3m;
@@ -591,6 +653,8 @@ int main( void )
 			Texture2 = cardArray[randomCard];
 			p2card3dead = false;
 			p2card3rev = false;
+			p2card3wait = false;
+			setP2Card3Dead();
 		}
 		if(!p2card1dead){
 			drawCard(P2CARD1m,MVP3,Texture3);
@@ -601,6 +665,8 @@ int main( void )
 			Texture3 = cardArray[randomCard];
 			p2card1dead = false;
 			p2card1rev = false;
+			p2card1wait = false;
+			setP2Card1Dead();
 		}
 		if(!p1card3dead){
 			drawCard(P1CARD3m,MVP4,Texture4);
@@ -611,6 +677,8 @@ int main( void )
 			Texture4 = cardArray[randomCard];
 			p1card3dead = false;
 			p1card3rev = false;
+			p1card3wait = false;
+			setP1Card3Dead();
 		}
 		if(!p1card1dead){
 			drawCard(P1CARD1m,MVP5,Texture5);
@@ -621,6 +689,8 @@ int main( void )
 			Texture5 = cardArray[randomCard];
 			p1card1dead = false;
 			p1card1rev = false;
+			p1card1wait = false;
+			setP1Card1Dead();
 		}
 		if(!p2card2dead){
 			drawCard(P2CARD2m,MVP6,Texture6);
@@ -631,6 +701,8 @@ int main( void )
 			Texture6 = cardArray[randomCard];
 			p2card2dead = false;
 			p2card2rev = false;
+			p2card2wait = false;
+			setP2Card2Dead();
 		}
 		if(!p1card2dead){
 			drawCard(P1CARD2m,MVP7,Texture7);
@@ -641,6 +713,8 @@ int main( void )
 			Texture7 = cardArray[randomCard];
 			p1card2dead = false;
 			p1card2rev = false;
+			p1card2wait = false;
+			setP1Card2Dead();
 		}
 
 		glUseProgram(programID);

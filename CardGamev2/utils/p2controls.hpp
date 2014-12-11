@@ -32,4 +32,14 @@ void setP2_Card1(glm::mat4 model);
 void setP2_Card2(glm::mat4 model);
 void setP2_Card3(glm::mat4 model);
 
+bool getP1Card3Dead();
+bool getP1Card2Dead();
+bool getP1Card1Dead();
+
+void setP1Card1Dead();
+void setP1Card2Dead();
+void setP1Card3Dead();
+
+void resetDeadFlags();
+
 #endif
