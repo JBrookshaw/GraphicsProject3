@@ -94,18 +94,18 @@ int p2LifeLoss() {
 	return player2;
 }
 
-int p2LifeLoss(int loss) {
+int p2LifeLoss(int loss3) {
 
 
-	player2 = player2 - loss;
+	player2 = player2 - loss3;
 
 	return player2;
 }
 
-void p2LifeCust(int loss) {
+void p2LifeCust(int loss1) {
 
 
-	player2 = player2 - loss;
+	player2 = player2 - loss1;
 
 	
 }

@@ -87,10 +87,10 @@ int p1LifeLoss(int loss) {
 	return player1;
 }
 
-void p1LifeCust(int loss) {
+void p1LifeCust(int loss2) {
 
 
-	player1 = player1 - loss;
+	player1 = player1 - loss2;
 
 	
 }

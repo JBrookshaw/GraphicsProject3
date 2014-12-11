@@ -614,7 +614,7 @@ int main( void )
 
 
 		char textLife1[256];
-		sprintf(textLife1,"%d", p1Life());
+		sprintf(textLife1,"%d", p2Life());
 		printText2D(textLife1, 700, 540, 30); // Top Life Total
 
 			char text[256];
@@ -623,7 +623,7 @@ int main( void )
 	
 
 			char textLife[256];
-		sprintf(textLife,"%d", p2Life());
+		sprintf(textLife,"%d", p1Life());
 		printText2D(textLife, 700, 35, 30); // Bottom Life Total  X, Y, Size
 
 
