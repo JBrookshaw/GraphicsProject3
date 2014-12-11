@@ -14,11 +14,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-#ignoring log files
-*.tlog
-*.suo
-*.log
-
 CardGame_v2.suo
 
 # =========================
