@@ -32,6 +32,7 @@ GLuint Texture3;
 GLuint Texture4;
 GLuint Texture5;
 GLuint Texture6;
+GLuint Texture7;
 
 GLuint VertexArrayID;
 
@@ -201,6 +202,7 @@ int main( void )
 	Texture4 = loadDDS("tex/dfsen.DDS");
 	Texture5 = loadDDS("tex/aceace.DDS");
 	Texture6 = loadDDS("tex/ipilot.DDS");
+	Texture7 = loadDDS("tex/mass.DDS");
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -327,6 +329,12 @@ int main( void )
 
 	bool playerturn =false;
 
+	float ghettoTimer = 1000;
+	float turnAnimation = 1;
+	bool turning1 = false;
+	bool turning2 = false;
+
+
 	do{
 
 		// Measure speed
@@ -339,7 +347,7 @@ int main( void )
 			lastTime += 1.0;
 		}
 
-		//Used for changing player perspective
+		if(!turning1 && !turning2){
 		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
 		ViewMatrix       = glm::lookAt(
 		glm::vec3(0,17,0.001f), 
@@ -357,6 +365,8 @@ int main( void )
 		);
 		playerturn =true;
 	}
+
+	}//end if either turn animation is not running
 
 		if(!playerturn)
 		{
@@ -452,8 +462,8 @@ int main( void )
 		drawCard(P2CARD1m,MVP3,Texture3);
 		drawCard(P1CARD3m,MVP4,Texture4);
 		drawCard(P1CARD1m,MVP5,Texture5);
-		drawCard(P2CARD2m,MVP6,Texture5);
-		drawCard(P1CARD2m,MVP7,Texture4);
+		drawCard(P2CARD2m,MVP6,Texture6);
+		drawCard(P1CARD2m,MVP7,Texture7);
 
 		////// End of rendering of the second object //////
 

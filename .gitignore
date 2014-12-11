@@ -58,4 +58,12 @@ Debug/CardGamev2.ilk
 *.obj
 *.ilk
 *.cache
-*.tlog
+
+CardGamev2/Debug/*.ipch
+CardGamev2/Debug/*.tlog
+CardGamev2/Debug/*.log
+CardGamev2/Debug/*.ipch
+CardGamev2/Debug/*.obj
+CardGamev2/Debug/*.ilk
+CardGamev2/Debug/*.cache
+
