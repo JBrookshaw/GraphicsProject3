@@ -54,6 +54,7 @@ mat4 dieAnimation = myScalingMatrix3*rotation2;
 
 //false = player1 | true = player2
 bool turn = false;
+bool p1attacking = false;
 
 float myDistance = 60, myDistance2 =60, myDistance3 = 60;
 
@@ -103,6 +104,7 @@ void p1card1attack(){
 			myDistance=60;
 			p1card1selectedanimation = false;
 			p1card1selected =false;
+			p1attacking = false;
 		}
 	}
 	if(attackright && !attackleft && !attackmiddle){
@@ -124,6 +126,7 @@ void p1card1attack(){
 			myDistance2=60;
 			 p1card1selectedanimation = false;
 			p1card1selected =false;
+			p1attacking = false;
 			
 		}
 	}
@@ -147,6 +150,7 @@ void p1card1attack(){
 			myDistance3=60;
 			 p1card1selectedanimation = false;
 			p1card1selected =false;
+			p1attacking = false;
 			
 		}
 	}
@@ -346,7 +350,7 @@ void createCopys(){
 void readInputs(){
 
 	bool isCardSelected = p1card1selected || p1card2selected || p1card3selected;
-
+	if(!p1attacking) {
 		if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS && isCardSelected){
 			attackright = true;
 			attackleft=false;
@@ -362,6 +366,7 @@ void readInputs(){
 			attackleft=false;
 			attackmiddle =true;
 		}
+	}
 
 	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
 		p1card1selected = true;

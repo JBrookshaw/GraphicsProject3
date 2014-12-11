@@ -51,6 +51,7 @@ mat4 die_Animation = my_ScalingMatrix3*rotation_2;
 
 //false = player1 | true = player2
 bool turn2 = false;
+bool p2attacking = false;
 
 float my_Distance = 60, my_Distance2 =60, my_Distance3 = 60;
 
@@ -100,6 +101,7 @@ void p2card1attack(){
 			my_Distance=60;
 			p2card1selectedanimation = false;
 			p2card1selected =false;
+			p2attacking = false;
 		}
 	}
 	if(attack_right && !attack_left && !attack_middle){
@@ -121,6 +123,7 @@ void p2card1attack(){
 			my_Distance2=60;
 			 p2card1selectedanimation = false;
 			p2card1selected =false;
+			p2attacking = false;
 			
 		}
 	}
@@ -144,6 +147,7 @@ void p2card1attack(){
 			my_Distance3=60;
 			 p2card1selectedanimation = false;
 			p2card1selected =false;
+			p2attacking = false;
 			
 		}
 	}
@@ -170,6 +174,7 @@ void p2card2attack(){
 			my_Distance=60;
 			p2card2selectedanimation = false;
 			p2card2selected =false;
+			p2attacking = false;
 		}
 	}
 	if(attack_right && !attack_left && !attack_middle){
@@ -191,6 +196,7 @@ void p2card2attack(){
 			my_Distance2=60;
 			 p2card2selectedanimation = false;
 			p2card2selected =false;
+			p2attacking = false;
 			
 		}
 	}
@@ -214,6 +220,7 @@ void p2card2attack(){
 			my_Distance3=60;
 			p2card2selectedanimation = false;
 			p2card2selected =false;
+			p2attacking = false;
 			
 		}
 	}
@@ -240,6 +247,7 @@ void p2card3attack(){
 			my_Distance=60;
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
+			p2attacking = false;
 		}
 	}
 	if(!attack_right && attack_left && !attack_middle){
@@ -261,6 +269,7 @@ void p2card3attack(){
 			my_Distance2=60;
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
+			p2attacking = false;
 		}
 	}
 
@@ -283,6 +292,7 @@ void p2card3attack(){
 			my_Distance3=60;
 			 p2card3selectedanimation = false;
 			p2card3selected =false;
+			p2attacking = false;
 		}
 	}
 }
@@ -342,23 +352,27 @@ void createCopys_(){
 
 void readInputs_(){
 	bool isCardSelected = p2card1selected || p2card2selected || p2card3selected;
-	
+	if(!p2attacking) {
 		if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS && isCardSelected){
 			attack_right = true;
 			attack_left=false;
 			attack_middle =false;
+
+			p2attacking = true;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
 			attack_left=true;
 			attack_middle =false;
+			p2attacking = true;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
 			attack_left=false;
 			attack_middle =true;
+			p2attacking = true;
 		}
-
+	}
 	
 
 	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
