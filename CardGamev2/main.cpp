@@ -573,20 +573,23 @@ int main( void )
 		
 		char text1[256];
 		sprintf(text1,"Life:", glfwGetTime() );
-		printText2D(text1, 620, 570, 25); // Top
+		printText2D(text1, 550, 540, 25); // Top
+
+		
+
 
 		char textLife1[256];
 		sprintf(textLife1,"%d", p1Life());
-		printText2D(textLife1, 750, 570, 25); // Top Life Total
+		printText2D(textLife1, 700, 540, 25); // Top Life Total
 
-
-		char text[256];
+			char text[256];
 		sprintf(text,"Life:", glfwGetTime() );
-		printText2D(text, 620, 30, 30); // Bottom
+		printText2D(text, 550, 35, 30); // Bottom
+	
 
 			char textLife[256];
 		sprintf(textLife,"%d", p2Life());
-		printText2D(textLife, 750, 30, 30); // Bottom Life Total  X, Y, Size
+		printText2D(textLife, 700, 35, 30); // Bottom Life Total  X, Y, Size
 
 
 
