@@ -357,6 +357,7 @@ void readInputs_(){
 			attack_right = true;
 			attack_left=false;
 			attack_middle =false;
+
 			p2attacking = true;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
