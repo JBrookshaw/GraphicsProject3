@@ -18,6 +18,8 @@ void p2Zero();
 void readInputs_();
 void player2Selection();
 
+void rev2();
+
 glm::mat4 getP1_Card1();
 glm::mat4 getP1_Card2();
 glm::mat4 getP1_Card3();

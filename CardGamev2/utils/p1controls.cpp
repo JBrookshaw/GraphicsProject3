@@ -136,6 +136,7 @@ void setP2Card1Dead(){
 
 
 
+
 void player1Inputs(){
 
 	readInputs();
@@ -512,6 +513,20 @@ void createCopys(){
 	P2CARD1Copy = P2CARD1;
 	P2CARD2Copy = P2CARD2;
 	P2CARD3Copy = P2CARD3;
+}
+
+void rev() {
+
+	if(!p2card1dead1){
+	P2CARD1 = P2CARD1Copy;
+	}
+	if(!p2card2dead1){
+	P2CARD3 = P2CARD2Copy;
+	}
+	if(!p2card3dead1){
+	P2CARD3 = P2CARD3Copy;
+	}
+
 }
 
 void readInputs(){

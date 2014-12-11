@@ -13,6 +13,7 @@ void p2Loss(int loss2);
 void p2LifeSet(int set2);
 int p2Life();
 
+void rev();
 
 int p1Moves();
 void p1Zero();
@@ -33,6 +34,14 @@ void setP1Card3(glm::mat4 model);
 void setP2Card1(glm::mat4 model);
 void setP2Card2(glm::mat4 model);
 void setP2Card3(glm::mat4 model);
+
+glm::mat4 getP2Card1C();
+glm::mat4 getP2Card2C();
+glm::mat4 getP2Card3C();
+
+glm::mat4 getP1Card1C();
+glm::mat4 getP1Card2C();
+glm::mat4 getP1Card3C();
 
 bool getP2Card3Dead();
 bool getP2Card2Dead();

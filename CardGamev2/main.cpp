@@ -491,7 +491,7 @@ int main( void )
 				);
 			playerturn =false;
 
-		
+		rev2();
 
 			if(p1card3wait){
 				p1card3rev=true;
@@ -526,7 +526,7 @@ int main( void )
 				);
 			playerturn = true;
 
-		
+		rev();
 
 			if(p2card3wait){
 				p2card3rev=true;
@@ -677,6 +677,7 @@ int main( void )
 			randomCard = rand() % 6;
 
 			Texture2 = cardArray[randomCard];
+			MVP2 = getP2Card3C();
 			p2card3dead = false;
 			p2card3rev = false;
 			p2card3wait = false;
@@ -689,6 +690,7 @@ int main( void )
 			randomCard = rand() % 6;
 
 			Texture3 = cardArray[randomCard];
+			MVP3 = getP2Card1C();
 			p2card1dead = false;
 			p2card1rev = false;
 			p2card1wait = false;
@@ -701,6 +703,7 @@ int main( void )
 			randomCard = rand() % 6;
 
 			Texture4 = cardArray[randomCard];
+			MVP4 = getP1Card3C();
 			p1card3dead = false;
 			p1card3rev = false;
 			p1card3wait = false;
@@ -713,6 +716,7 @@ int main( void )
 			randomCard = rand() % 6;
 
 			Texture5 = cardArray[randomCard];
+			MVP5 = getP1Card1C();
 			p1card1dead = false;
 			p1card1rev = false;
 			p1card1wait = false;
@@ -725,6 +729,7 @@ int main( void )
 			randomCard = rand() % 6;
 
 			Texture6 = cardArray[randomCard];
+			MVP4 = getP2Card2C();
 			p2card2dead = false;
 			p2card2rev = false;
 			p2card2wait = false;
@@ -737,6 +742,7 @@ int main( void )
 			randomCard = rand() % 6;
 
 			Texture7 = cardArray[randomCard];
+			MVP7 = getP1Card2C();
 			p1card2dead = false;
 			p1card2rev = false;
 			p1card2wait = false;

@@ -143,6 +143,20 @@ void player2Inputs(){
 
 }
 
+void rev2() {
+
+	if(!p1card1dead1){
+	P1_CARD1 = P1_CARD1Copy;
+	}
+	if(!p1card2dead1){
+	P1_CARD2 = P1_CARD2Copy;
+	}
+	if(!p1card3dead1){
+	P1_CARD3 = P1_CARD3Copy;
+	}
+
+}
+
 void p2card1attack(){
 
 	if(!attack_right && attack_left && !attack_middle && !attack_player){
