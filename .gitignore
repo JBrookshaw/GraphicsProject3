@@ -57,3 +57,10 @@ Debug/CardGamev2.exe
 Debug/CardGamev2.pdb
 Debug/CardGamev2.ilk
 *.ipch
+*.tlog
+*.log
+*.ipch
+*.obj
+*.ilk
+*.cache
+*.tlog
