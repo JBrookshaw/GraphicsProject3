@@ -13,9 +13,9 @@ void p2Loss(int loss2);
 void p2LifeSet(int set2);
 int p2Life();
 
+
 int p1Moves();
 void p1Zero();
-
 
 void readInputs();
 void player1Selection();

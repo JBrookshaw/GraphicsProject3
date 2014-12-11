@@ -426,7 +426,7 @@ int main( void )
 	setP1Card1(temp);
 	setP1_Card1(temp);
 
-	initText2D( "tex/Holstein.DDS" );
+	initText2D( "tex/font.DDS" );
 
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
@@ -441,6 +441,8 @@ int main( void )
 	bool p2card1wait = false;
 
 	bool playerturn = false;
+	int test2 = p2Life();
+		int test1 = p2Life();
 
 	do{
 
@@ -453,6 +455,30 @@ int main( void )
 			nbFrames = 0;
 			lastTime += 1.0;
 		}
+
+			//Used for changing player perspective
+		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
+		glm::vec3(0,23,0.001f), 
+		glm::vec3(0,0,0), 
+		glm::vec3(0,1,0)  
+		);
+		playerturn =false;
+	}
+
+
+
+		if (glfwGetKey( window, GLFW_KEY_9 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
+		glm::vec3(0,23,0.001f), 
+		glm::vec3(0,0,0), 
+		glm::vec3(0,-1,0)  
+		);
+		playerturn =true;
+	}
+
+
+
 
 
 		if (p2Moves() == 2) {
@@ -734,32 +760,69 @@ int main( void )
 		glDisable(GL_BLEND);
 
 
+	
 		char text1[256];
-		sprintf(text1,"Life:", glfwGetTime() );
-		printText2D(text1, 550, 540, 25); // Top
-
-
-
-
+		
 		char textLife1[256];
-		sprintf(textLife1,"%d", p1Life());
-		printText2D(textLife1, 700, 540, 25); // Top Life Total
-
+		char textLife[256];
 		char text[256];
 		sprintf(text,"Life:", glfwGetTime() );
 		printText2D(text, 550, 35, 30); // Bottom
 
+		sprintf(text1,"Life:", glfwGetTime() );
+		printText2D(text1, 550, 540, 30); // Top
 
-		char textLife[256];
-		sprintf(textLife,"%d", p2Life());
-		printText2D(textLife, 700, 35, 30); // Bottom Life Total  X, Y, Size
+		if (playerturn == true) { 
+		
+		sprintf(textLife,"%d",p2Life() );
+		printText2D(textLife, 700, 35, 30); // bottom Life Total
+
+
+			sprintf(textLife1,"%d",p1Life() );
+		printText2D(textLife1, 700, 540, 30); // Top Life Total
+
+		}
+
+		else {
+
+				
+		sprintf(textLife,"%d",p2Life() );
+		printText2D(textLife, 700, 540, 30); // Top Life Total
+
+		sprintf(textLife1,"%d", p1Life());
+		printText2D(textLife1, 700, 35, 30); // Bottom Life Total  X, Y, Size
+
+
+		}
+		
+
+		if (p2Life() <= 0) {
+
+			char text4[256]; 
+			sprintf(text4,"Han Wins!");
+			printText2D(text4, 50, 300, 80);
+
+		}
+
+		else if (p1Life() <= 0) {
+
+			char text5[256];
+			sprintf(text5,"Lando Wins!");
+			printText2D(text5, 0, 300, 80);
+
+			}
+
+
+
+		
+		
 
 
 
 		if (!glfwGetKey( window, GLFW_KEY_5 ) == GLFW_RELEASE) {
 
 
-			p1LifeLoss();
+			p1Loss(1);
 			Sleep(150);
 
 		}
@@ -767,7 +830,7 @@ int main( void )
 		if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
 
 
-			p2LifeLoss();
+			p2Loss(1);
 			Sleep(150);
 
 		}
