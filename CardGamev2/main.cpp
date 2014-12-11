@@ -450,10 +450,32 @@ int main( void )
 		}
 
 
-		if (p2Moves() == 2) {
-			
 		
-			
+		//Used for changing player perspective
+		if (glfwGetKey( window, GLFW_KEY_0 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
+		glm::vec3(0,23,0.001f), 
+		glm::vec3(0,0,0), 
+		glm::vec3(0,1,0)  
+		);
+		playerturn =false;
+	}
+
+
+
+		if (glfwGetKey( window, GLFW_KEY_9 ) == GLFW_PRESS){
+		ViewMatrix       = glm::lookAt(
+		glm::vec3(0,23,0.001f), 
+		glm::vec3(0,0,0), 
+		glm::vec3(0,-1,0)  
+		);
+		playerturn =true;
+	}
+
+
+
+		if (p2Moves() == 2) {
+	
 			p2Zero();
 
 			ViewMatrix       = glm::lookAt(
@@ -462,11 +484,6 @@ int main( void )
 				glm::vec3(0,1,0)  
 				);
 			playerturn =false;
-
-			
-			
-
-
 
 		}
 
@@ -700,7 +717,7 @@ int main( void )
 
 				
 		sprintf(textLife,"%d",p2Life() );
-		printText2D(textLife, 700, 540, 25); // Top Life Total
+		printText2D(textLife, 700, 540, 30); // Top Life Total
 
 		sprintf(textLife1,"%d", p1Life());
 		printText2D(textLife1, 700, 35, 30); // Bottom Life Total  X, Y, Size
