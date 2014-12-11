@@ -56,7 +56,7 @@ mat4 dieAnimation = myScalingMatrix3*rotation2;
 
 //false = player1 | true = player2
 int moves = 0;
-int player2 = 40;
+int player2 = 20;
 bool turn = false;
 bool p1attacking = false;
 

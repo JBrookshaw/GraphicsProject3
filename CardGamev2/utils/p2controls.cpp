@@ -50,7 +50,7 @@ mat4 rotation_2 = mat4(
 mat4 die_Animation = my_ScalingMatrix3*rotation_2;
 
 //false = player1 | true = player2
-int player1 = 40;
+int player1 = 20;
 int moves1 = 0;
 bool turn2 = false;
 bool p2attacking = false;

@@ -709,6 +709,22 @@ int main( void )
 		}
 		
 
+		if (p2Life() <= 0) {
+
+			char text4[256]; 
+			sprintf(text4,"Han Wins!");
+			printText2D(text4, 50, 300, 80);
+
+		}
+
+		else if (p1Life() <= 0) {
+
+			char text5[256];
+			sprintf(text5,"Lando Wins!");
+			printText2D(text5, 0, 300, 80);
+
+			}
+
 
 
 		
