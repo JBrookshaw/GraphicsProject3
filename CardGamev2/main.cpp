@@ -4,9 +4,14 @@
 #include <vector>
 
 #include <GL/glew.h>
+#include <GL/freeglut.h>
+#include <GL/glut.h>
+
 
 #include <GLFW/glfw3.h>
 GLFWwindow* window;
+
+
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -19,12 +24,24 @@ using namespace glm;
 #include "utils/vboindexer.hpp"
 #include "utils/p1controls.hpp"
 #include "utils/p2controls.hpp"
+#include "utils/text2D.hpp"
+
+
+
+//Freetype Variables
+
+
+
+
+
 
 GLuint Texture;
 GLuint Texture2;
 GLuint Texture3;
 GLuint Texture4;
 GLuint Texture5;
+
+
 
 GLuint VertexArrayID;
 
@@ -35,6 +52,7 @@ GLuint ViewMatrixID;
 GLuint ModelMatrixID;
 
 GLuint TextureID;
+
 
 std::vector<glm::vec3> vertices;
 std::vector<glm::vec2> uvs;
@@ -89,6 +107,33 @@ glm::mat4 setUpCard(glm::mat4 MODEL, glm::mat4 MVP, glm::vec3 TRANS, glm::mat4 S
 	MVP = ProjectionMatrix * ViewMatrix * MODEL;
 	return MODEL;
 }
+
+
+
+void drawText(const char *text, int length, int x, int y){
+ glMatrixMode(GL_PROJECTION); // change the current matrix to PROJECTION
+ double matrix[16]; // 16 doubles in stack memory
+ glGetDoublev(GL_PROJECTION_MATRIX, matrix); // get the values from PROJECTION matrix to local variable
+ glLoadIdentity(); // reset PROJECTION matrix to identity matrix
+ glOrtho(0, 800, 0, 600, -5, 5); // orthographic perspective
+ glMatrixMode(GL_MODELVIEW); // change current matrix to MODELVIEW matrix again
+ glLoadIdentity(); // reset it to identity matrix
+ glPushMatrix(); // push current state of MODELVIEW matrix to stack
+ glLoadIdentity(); // reset it again. (may not be required, but it my convention)
+ glRasterPos2i(x, y); // raster position in 2D
+ for(int i=0; i<length; i++){
+  glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)text[i]); // generation of characters in our text with 9 by 15 GLU font
+ }
+ glPopMatrix(); // get MODELVIEW matrix value from stack
+ glMatrixMode(GL_PROJECTION); // change current matrix mode to PROJECTION
+ glLoadMatrixd(matrix); // reset
+ glMatrixMode(GL_MODELVIEW); // change current matrix mode to MODELVIEW
+}
+ 
+
+
+
+
 void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex);
@@ -109,6 +154,7 @@ void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glDrawElements(GL_TRIANGLES, indices2.size(), GL_UNSIGNED_SHORT, (void*)0);
 }
 
+
 int main( void )
 {
 	// Initialise GLFW
@@ -117,6 +163,10 @@ int main( void )
 		fprintf( stderr, "Failed to initialize GLFW\n" );
 		return -1;
 	}
+	
+
+	
+	
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -211,6 +261,9 @@ int main( void )
 	glUseProgram(programID);
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
+	
+
+
 	// For speed computation
 	double lastTime = glfwGetTime();
 	int nbFrames = 0;
@@ -294,6 +347,7 @@ int main( void )
 	setP1Card1(P1CARD1m);
 	setP1_Card1(P1CARD1m);
 
+	initText2D( "tex/Holstein.DDS" );
 
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
@@ -435,6 +489,10 @@ int main( void )
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 
+		char text[256];
+		sprintf(text,"Test", glfwGetTime() );
+		printText2D(text, 10, 500, 60);
+
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -451,6 +509,8 @@ int main( void )
 	glDeleteProgram(programID);
 	glDeleteTextures(1, &Texture);
 	glDeleteVertexArrays(1, &VertexArrayID);
+
+
 
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
