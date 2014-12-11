@@ -324,6 +324,8 @@ int main( void )
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
 	createCopys_();
+	int player1 = 40;
+	int player2 = 40;
 
 	bool playerturn =false;
 
@@ -461,9 +463,41 @@ int main( void )
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
 
+		
+		char text1[256];
+		sprintf(text1,"Life:", glfwGetTime() );
+		printText2D(text1, 620, 520, 25); // Top
+
+		char textLife1[256];
+		sprintf(textLife1,"%d", player1 );
+		printText2D(textLife1, 750, 520, 25); // Top Life Total
+
+
 		char text[256];
-		sprintf(text,"Test", glfwGetTime() );
-		printText2D(text, 10, 500, 60);
+		sprintf(text,"Life:", glfwGetTime() );
+		printText2D(text, 620, 80, 25); // Bottom
+
+			char textLife[256];
+		sprintf(textLife,"%d", player2);
+		printText2D(textLife, 750, 80, 25); // Bottom Life Total  X, Y, Size
+
+
+
+		if (!glfwGetKey( window, GLFW_KEY_5 ) == GLFW_RELEASE) {
+		
+			
+		player1 = player1-1;
+		Sleep(150);
+		
+		}
+
+			if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
+		
+			
+		player2 = player2-1;
+		Sleep(150);
+		
+		}
 
 		// Swap buffers
 		glfwSwapBuffers(window);
