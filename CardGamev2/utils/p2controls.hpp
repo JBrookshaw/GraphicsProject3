@@ -8,6 +8,9 @@ void p2card1attack();
 void p2card2attack();
 void p2card3attack();
 
+int p1Life();
+int p1LifeLoss();
+
 
 void readInputs_();
 void player2Selection();

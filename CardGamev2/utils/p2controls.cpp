@@ -50,6 +50,7 @@ mat4 rotation_2 = mat4(
 mat4 die_Animation = my_ScalingMatrix3*rotation_2;
 
 //false = player1 | true = player2
+int player1 = 40;
 bool turn2 = false;
 bool p2attacking = false;
 
@@ -59,6 +60,33 @@ bool attack_right = false, attack_left = false, attack_middle = false, attack_pl
 bool die_ = false, die_2 = false, die_3 = false,	die_4 = false;
 bool p2card1selected = false, p2card2selected = false, p2card3selected  = false;
 bool p2card1selectedanimation = false, p2card2selectedanimation = false, p2card3selectedanimation  = false;
+
+
+int p1LifeLoss() {
+
+
+	player1 = player1 - 1;
+
+	return player1;
+}
+
+int p1LifeLoss(int loss) {
+
+
+	player1 = player1 - loss;
+
+	return player1;
+}
+
+
+int p1Life() {
+
+
+	
+
+	return player1;
+}
+
 
 void player2Inputs(){
 

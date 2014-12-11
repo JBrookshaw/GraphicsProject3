@@ -142,6 +142,10 @@ void drawCard(glm::mat4 model, glm::mat4 mvp, GLuint tex){
 	glDrawElements(GL_TRIANGLES, indices2.size(), GL_UNSIGNED_SHORT, (void*)0);
 }
 
+	
+	
+
+
 
 int main( void )
 {
@@ -324,8 +328,7 @@ int main( void )
 	//creates copys of original positions of cards to rturn to after animations
 	createCopys();
 	createCopys_();
-	int player1 = 40;
-	int player2 = 40;
+	
 	int moves = 0;
 	bool playerturn =false;
 
@@ -473,7 +476,7 @@ int main( void )
 		printText2D(text1, 620, 520, 25); // Top
 
 		char textLife1[256];
-		sprintf(textLife1,"%d", player1 );
+		sprintf(textLife1,"%d", p1Life());
 		printText2D(textLife1, 750, 520, 25); // Top Life Total
 
 
@@ -482,7 +485,7 @@ int main( void )
 		printText2D(text, 620, 80, 25); // Bottom
 
 			char textLife[256];
-		sprintf(textLife,"%d", player2);
+		sprintf(textLife,"%d", p2Life());
 		printText2D(textLife, 750, 80, 25); // Bottom Life Total  X, Y, Size
 
 
@@ -490,7 +493,7 @@ int main( void )
 		if (!glfwGetKey( window, GLFW_KEY_5 ) == GLFW_RELEASE) {
 		
 			
-		player1 = player1-1;
+		p1LifeLoss();
 		Sleep(150);
 		
 		}
@@ -498,7 +501,7 @@ int main( void )
 			if (!glfwGetKey( window, GLFW_KEY_6 ) == GLFW_RELEASE) {
 		
 			
-		player2 = player2-1;
+		p2LifeLoss();
 		Sleep(150);
 		
 		}

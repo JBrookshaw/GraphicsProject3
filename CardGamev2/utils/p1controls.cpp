@@ -10,6 +10,8 @@ using namespace glm;
 
 #include "p1controls.hpp"
 
+
+
 glm::mat4 P1CARD1;
 glm::mat4 P1CARD2;
 glm::mat4 P1CARD3;
@@ -53,6 +55,8 @@ mat4 rotation2 = mat4(
 mat4 dieAnimation = myScalingMatrix3*rotation2;
 
 //false = player1 | true = player2
+
+int player2 = 40;
 bool turn = false;
 bool p1attacking = false;
 
@@ -62,6 +66,29 @@ bool attackright = false, attackleft = false, attackmiddle = false, attackplayer
 bool die = false, die2 = false, die3 = false, die4 = false;
 bool p1card1selected = false, p1card2selected = false, p1card3selected  = false;
 bool p1card1selectedanimation = false, p1card2selectedanimation = false, p1card3selectedanimation  = false;
+
+int p2LifeLoss() {
+
+
+	player2 = player2 - 1;
+	return player2;
+}
+
+int p2LifeLoss(int loss) {
+
+
+	player2 = player2 - loss;
+
+	return player2;
+}
+
+
+int p2Life() {
+
+
+	
+	return player2;
+}
 
 void player1Inputs(){
 
@@ -169,7 +196,7 @@ void p1card1attack(){
 		P2CARD2 = P2CARD2 * dieAnimation;			// THIS NEEDS TO BE OPPOSITE PLAYER
 		myDistance4--;
 		if(myDistance4 <= 0){
-			P2CARD2 = P2CARD2Copy;			//THIS NEEDS TO BE OPPOSITE PLAYER
+			player2 = player2-2;			//THIS NEEDS TO BE OPPOSITE PLAYER
 			die4 = false;
 			myDistance4=80;
 			 p1card1selectedanimation = false;
