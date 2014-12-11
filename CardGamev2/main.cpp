@@ -428,7 +428,7 @@ int main( void )
 			p2Zero();
 
 			ViewMatrix       = glm::lookAt(
-				glm::vec3(0,17,0.001f), 
+				glm::vec3(0,23,0.001f), 
 				glm::vec3(0,0,0), 
 				glm::vec3(0,1,0)  
 				);
@@ -443,7 +443,7 @@ int main( void )
 			p1Zero();
 
 			ViewMatrix   = glm::lookAt(
-				glm::vec3(0,17,0.001f), 
+				glm::vec3(0,23,0.001f), 
 				glm::vec3(0,0,0), 
 				glm::vec3(0,-1,0)  
 				);
