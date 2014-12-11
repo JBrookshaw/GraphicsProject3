@@ -55,7 +55,7 @@ mat4 rotation2 = mat4(
 mat4 dieAnimation = myScalingMatrix3*rotation2;
 
 //false = player1 | true = player2
-
+int moves = 0;
 int player2 = 40;
 bool turn = false;
 bool p1attacking = false;
@@ -66,6 +66,17 @@ bool attackright = false, attackleft = false, attackmiddle = false, attackplayer
 bool die = false, die2 = false, die3 = false, die4 = false;
 bool p1card1selected = false, p1card2selected = false, p1card3selected  = false;
 bool p1card1selectedanimation = false, p1card2selectedanimation = false, p1card3selectedanimation  = false;
+
+
+int p1Moves() {
+
+	return moves;
+}
+
+void p1Zero() {
+
+	moves = 0;
+}
 
 int p2LifeLoss() {
 
@@ -213,6 +224,7 @@ void p1card1attack(){
 			
 		}
 	}
+	
 }
 
 void p1card2attack(){
@@ -310,6 +322,7 @@ void p1card2attack(){
 			
 		}
 	}
+	
 }
 
 void p1card3attack(){
@@ -405,6 +418,7 @@ void p1card3attack(){
 			
 		}
 	}
+
 }
 
 void player1Selection(){
@@ -470,6 +484,7 @@ void readInputs(){
 			attackmiddle =false;
 			attackplayer = false;
 			p1attacking = true;
+				moves++;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
@@ -477,6 +492,7 @@ void readInputs(){
 			attackmiddle =false;
 			attackplayer = false;
 			p1attacking = true;
+				moves++;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
@@ -484,6 +500,7 @@ void readInputs(){
 			attackmiddle =true;
 			attackplayer = false;
 			p1attacking = true;
+				moves++;
 		}
 			else	if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS && isCardSelected){
 			attackright = false;
@@ -491,6 +508,7 @@ void readInputs(){
 			attackmiddle =false;
 			attackplayer = true;
 			p1attacking = true;
+				moves++;
 		}
 
 

@@ -11,6 +11,9 @@ void p1card3attack();
 int p2Life();
 int p2LifeLoss();
 
+int p1Moves();
+void p1Zero();
+
 
 void readInputs();
 void player1Selection();

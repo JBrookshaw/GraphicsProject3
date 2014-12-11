@@ -51,9 +51,9 @@ mat4 die_Animation = my_ScalingMatrix3*rotation_2;
 
 //false = player1 | true = player2
 int player1 = 40;
+int moves1 = 0;
 bool turn2 = false;
 bool p2attacking = false;
-
 float my_Distance = 60, my_Distance2 =60, my_Distance3 = 60, my_Distance4= 60;
 
 bool attack_right = false, attack_left = false, attack_middle = false, attack_player = false;
@@ -61,6 +61,15 @@ bool die_ = false, die_2 = false, die_3 = false,	die_4 = false;
 bool p2card1selected = false, p2card2selected = false, p2card3selected  = false;
 bool p2card1selectedanimation = false, p2card2selectedanimation = false, p2card3selectedanimation  = false;
 
+int p2Moves() {
+
+	return moves1;
+}
+
+void p2Zero() {
+
+	moves1 = 0;
+}
 
 int p1LifeLoss() {
 
@@ -94,6 +103,7 @@ int p1Life() {
 
 	return player1;
 }
+
 
 
 void player2Inputs(){
@@ -188,11 +198,11 @@ void p2card1attack(){
 		}
 	}
 	if(!attack_right && !attack_left && !attack_middle && attack_player){
-		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.06f, 0.0f, -0.05f)); // ADJusted to middle back
+		P2_CARD1 = glm::translate(P2_CARD1, glm::vec3(0.06f, 0.0f, -0.09f)); //Third Number Adjusted to .09 from .05
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			P2_CARD1 = P2_CARD1Copy;
-			attack_middle = false;
+			attack_player = false;
 			my_Distance4 = 60;
 			die_4=true;
 		}
@@ -210,6 +220,7 @@ void p2card1attack(){
 			
 		}
 	}
+	
 }
 
 void p2card2attack(){
@@ -284,11 +295,11 @@ void p2card2attack(){
 		}
 	}
 if(!attack_right && !attack_left && !attack_middle && attack_player){
-		P2_CARD2 = glm::translate(P2_CARD2, glm::vec3(0.06f, 0.0f, -0.05f)); // ADJusted to middle back
+		P2_CARD2 = glm::translate(P2_CARD2, glm::vec3(0.0f, 0.0f, -0.09f)); // ADJusted to middle back
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			P2_CARD2 = P2_CARD2Copy;
-			attack_middle = false;
+			attack_player = false;
 			my_Distance4 = 60;
 			die_4=true;
 		}
@@ -306,6 +317,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 			
 		}
 	}
+	
 }
 
 void p2card3attack(){
@@ -378,11 +390,11 @@ void p2card3attack(){
 		}
 	}
 if(!attack_right && !attack_left && !attack_middle && attack_player){
-		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(0.06f, 0.0f, -0.05f)); // ADJusted to middle back
+		P2_CARD3 = glm::translate(P2_CARD3, glm::vec3(-0.06f, 0.0f, -0.09f)); // Adjusted third number to .09
 		my_Distance4--;
 		if(my_Distance4 <= 0){
 			P2_CARD3 = P2_CARD3Copy;
-			attack_middle = false;
+			attack_player = false;
 			my_Distance4 = 60;
 			die_4=true;
 		}
@@ -400,6 +412,7 @@ if(!attack_right && !attack_left && !attack_middle && attack_player){
 			
 		}
 	}
+	
 }
 
 void player2Selection(){
@@ -465,6 +478,7 @@ void readInputs_(){
 			attack_player = false;
 
 			p2attacking = true;
+			moves1++;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
@@ -472,6 +486,7 @@ void readInputs_(){
 			attack_middle =false;
 			attack_player = false;
 			p2attacking = true;
+			moves1++;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
@@ -479,6 +494,7 @@ void readInputs_(){
 			attack_middle =true;
 			attack_player = false;
 			p2attacking = true;
+			moves1++;
 		}
 		else	if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS && isCardSelected){
 			attack_right = false;
@@ -486,6 +502,8 @@ void readInputs_(){
 			attack_middle =false;
 			attack_player = true;
 			p2attacking = true;
+			moves1++;
+
 		}
 
 	if (glfwGetKey( window, GLFW_KEY_1 ) == GLFW_PRESS){
