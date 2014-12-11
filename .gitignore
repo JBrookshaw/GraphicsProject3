@@ -57,7 +57,6 @@ Debug/CardGamev2.ilk
 *.tlog
 *.log
 *.ipch
-*.obj
 *.ilk
 *.cache
 *.tlog
