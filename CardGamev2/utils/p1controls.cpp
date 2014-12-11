@@ -306,7 +306,7 @@ void p1card2attack(){
 		}
 	}
 	if(!attackright && !attackleft && !attackmiddle && attackplayer){
-		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.019f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
+		P1CARD2 = glm::translate(P1CARD2, glm::vec3(0.0f, 0.0f, -0.19f)); // NEEDS TO BE ADJUSTED TO MIDDLE BACK
 		myDistance4--;
 		if(myDistance4 <= 0){
 			P1CARD2 = P1CARD2Copy;			
